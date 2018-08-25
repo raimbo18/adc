@@ -213,15 +213,13 @@ def RIDEN_FAST_USER(fast):
                             if " " in Name:
                                 nick = Name.split(' ')
                                 if len(nick) == 2:
-                                    cl.mentionWithRFU(fast.param1,fast.param2,"and the Reader Comes ","" + " " )
+                                    cl.mentionWithRFU(fast.param1,fast.param2,"and the Reader Comes ","" + " ")
                                 else:
-                                    cl.mentionWithRFU(fast.param1,fast.param2,"Hei, ","" + "Comeon Join the Conversation" )
+                                    cl.mentionWithRFU(fast.param1,fast.param2,"Hei, ","" + "Comeon Join the Conversation")
                             else:
-                                cl.mentionWithRFU(fast.param1,fast.param2,"Hellooo, ","" + "What are You doing There" )
-                        else:
-                            cl.mentionWithRFU(fast.param1,fast.param2,"Hei, ","" + "How are you today?" )
+                                cl.mentionWithRFU(fast.param1,fast.param2,"Hellooo, ","" + "What are You doing There")
                     else:
-                        pass
+                        cl.mentionWithRFU(fast.param1,fast.param2,"Hei, ","" + "How are you today?")
                 else:
                     pass
             except:
