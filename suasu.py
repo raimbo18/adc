@@ -129,6 +129,12 @@ Mozilla = {
         "Mozilla/5.0 (Windows NT 5.0; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0",
         "Mozilla/5.0 (Windows NT 5.0; rv:5.0) Gecko/20100101 Firefox/5.0"
     ],
+    "mimic": {
+        "copy": False,
+        "conpp": False,
+        "status": False,
+        "target": {}
+    }
 }
 
 setTime = {}
