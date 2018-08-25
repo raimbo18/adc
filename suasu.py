@@ -410,13 +410,6 @@ def RIDEN_FAST_USER(fast):
                         text = msg.text
                         if text is not None:
                             cl.sendMessage(kirim,text)
-                    if Squad["UnsendPesan"] == True:
-                        msg = fast.message
-                        if msg.toType == 0:
-                            cl.log(" {} - {} ".format(str(user), str(rfuText)))
-                        else:
-                            cl.log(" {} - {} ".format(str(kirim), str(rfuText)))
-                            msg_dict[msg.id] = {"rider": rfuText, "pelaku": user, "createdTime": msg.createdTime, "contentType": msg.contentType, "contentMetadata": msg.contentMetadata}
                     if Squad["Timeline"] == True:
                        if msg.contentType == 16:
                             ret_ = " ㄔPosting Infoㄔ\n"
@@ -465,24 +458,6 @@ def RIDEN_FAST_USER(fast):
                                 zxc += pesan2
                                 pesan = xpesan + zxc + ret_ + ""
                                 cl.sendMessage(kirim, pesan, contentMetadata={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}, contentType=0)
-
-        if fast.type == 65:
-          if Squad['UnsendPesan'] == True:
-              try:
-                  you = fast.param1
-                  msg.id = fast.param2
-                  user = msg._from
-                  if msg.id in msg_dict:
-                    if msg_dict[msg.id]["pelaku"]:
-                        pelaku = cl.getContact(msg_dict[msg.id]["pelaku"])
-                        nama = pelaku.displayName
-                        dia = " ΞUnsend DetectedΞ\n"
-                        dia += "\n1. Name : " + nama
-                        dia += "\n2. Taken : {}".format(str(msg_dict[msg.id]["createdTime"]))
-                        dia += "\n3. Text : {}".format(str(msg_dict[msg.id]["rider"]))
-                        cl.mentionWithRFU(you,user," メ","\n\n" +str(dia))
-              except:
-                  cl.sendMessage(you, "Return")
 
         if fast.type in [25,26]:
             msg = fast.message
