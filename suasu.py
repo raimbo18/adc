@@ -115,7 +115,7 @@ RfuCctv={
     "Point3":{}
 }
 
-Helpz ="""    「 Fav 」
+Helpz ="""    「 Favs 」
 Tagall / Mentionall
 Ceksider on/off
  'Ceksider' :
@@ -123,8 +123,6 @@ Ceksider on/off
  'Recheck' :
   Mengulang titik Pembaca
 Getsider on/off
-
-    「 Regular 」
 @Me
 Calendar
 Groupinfo
@@ -134,7 +132,7 @@ Geturl
   「 Token - OFFLINE 」
 Tokenlist/offline
 
-  '''Once Again, An JUST FOR FUN!'''
+'''Once Again, An JUST FOR FUN!'''
 
 『 @About : to See a Creator 』
 『 @Bye : Bot Out 』"""
@@ -214,7 +212,7 @@ def RIDEN_FAST_USER(fast):
                                         "contents": [
                                             {
                                                 "type": "text",
-                                                "text": "   「 Hai 」\n", #% (elapsed_time),
+                                                "text": "   「 Joined Groups 」\n", #% (elapsed_time),
                                                 "size": "md",
                                                 "weight": "bold",
                                                 "align": "center",
@@ -546,9 +544,57 @@ def RIDEN_FAST_USER(fast):
                                     sekawan += str(wi) + ". " +cl.getContact(m_id).displayName + "\n"
                                 cl.sendText(kirim,"     「 Devlist 」\nOwner :\n"+rfu+"\nAdmin :\n"+sekawan+" ") #+ str(len(Owner)+len(Squad["Admin"])))
 
-                        elif rfuText.lower() == "bye": #With INDUK
+                        elif rfuText.lower() == "@bye": #With INDUK
                                 ginfo = cl.getGroup(kirim)
-                                cl.sendText(kirim,"さようなら\n" + str(" "+ginfo.name+" "))
+                                _session = requests.session()
+                                image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
+                                url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
+                                headers = {
+                                    "Host": "game.linefriends.com",
+                                    "Content-Type": "application/json",
+                                    "User-Agent": "Mozilla/5.0",
+                                    "Referer": "https://game.linefriends.com/cdn/jbp-lcs/"
+                                }
+                                data = {
+                                    "cc": "UXfpO//D+K6TlqsIBX4AhlamXjhsCUtI1/lWa0zxvp3YA3BlQFwCS8cEKWXBtSJO2cwDtNmbXRA6QPIDBiHbvDOODNoaDQgv6Vno900RzrJ+orAi+vCx9BymUUoebOT3RRtTaJHTYL3AiHLB1MlUdOJvGf7QqPih3p1WUxvWG1v+Tol4W/zAEFdXld5bYneQI3YAZjUn8Ejekfh3qwEHu30f9IayoJs1IwU5C45QMS8Qfu73cln4qH90pgOiQ2Yq15ZJ68/0/Amwy46C5ugyoqookxI4/Oh+Iu+tjT0VtP2Fv5/YoNCKOwbrsw2jHAvL8ACR1qVJj2NesAHkB7fDzC6Ncb0mbxQ5/r1P8oQ1Gbk",
+                                    "to": to,
+                                    "messages": [
+                                        {
+                                            "type": "flex",
+                                            "altText": "Puy",
+                                            "contents": {
+                                                "type": "bubble",
+                                                "body": {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "text": "   「 Out Group 」\n", #% (elapsed_time),
+                                                            "size": "md",
+                                                            "weight": "bold",
+                                                            "align": "center",
+                                                            "gravity": "top",
+                                                            "color": "#000000",
+                                                        },
+                                                        {
+                                                            "type": "text",
+                                                            "text": "Dadah '{}' Invite kembali jika Perlu.".format(str(ginfo.name)),
+                                                            "size": "md",
+                                                            "align": "center",
+                                                            "gravity": "top",
+                                                            "color": "#0000ff",
+                                                            "wrap": True
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                                data = json.dumps(data)
+                                sendPost = _session.post(url, data=data, headers=headers)
+                                #cl.sendText(kirim,"さようなら\n" + str(" "+ginfo.name+" "))
                                 cl.leaveGroup(kirim)
 
                         elif rfuText.lower() == "leaveall grup":
@@ -1721,7 +1767,7 @@ def RIDEN_FAST_USER(fast):
                             sendPost = _session.post(url, data=data, headers=headers)
 ### Calendar Ended ###
 ### Myinfo ###
-                        elif rfuText.lower().startswith("@me"):  
+                        elif rfuText.lower().startswith("@me"):
                             contact = cl.getContact(user)
                             _session = requests.session()
                             image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
@@ -1741,73 +1787,75 @@ def RIDEN_FAST_USER(fast):
                                         "altText": "Puy",
                                         "contents": {
                                             "type": "bubble",
-                                            #"header": {
-                                            #    "type": "box",
-                                            #    "layout": "vertical",
-                                            #    "contents": [
-                                            #      {
-                                            #        "type": "text",
-                                            #        "align": "center",
-                                            #        "color": "#000000",
-                                            #        "size": "lg",
-                                            #        "weight": "bold",
-                                            #        "text": "「 Profile 」"
-                                            #      }
-                                            #    ]
-                                            #  },
-                                            "hero": {
-                                              "type": "image",
-                                              "url": "https://syadnysyz2.herokuapp.com/storage/img?url=http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus),
-                                              "size": "full",
-                                              "aspectRatio": "16:9" #20:13
-                                            },
-                                            "body": {
-                                              "type": "box",
-                                              "layout": "vertical",
-                                              "spacing": "sm",
-                                              "contents": [
-                                                {
-                                                  "type": "text",
-                                                  "align": "center",
-                                                  "weight": "regular",
-                                                  "color": "#186A3B",
-                                                  "text": "{}".format(contact.displayName)
-                                                  #"flex": 3
-                                                },
-                                                {
-                                                  "type": "text",
-                                                  "weight": "regular",
-                                                  "color": "#aaaaaa",
-                                                  "align": "center",
-                                                  "text": "{}".format(contact.statusMessage),
-                                                  "wrap": True
-                                                  #"flex": 5
-                                                }
-                                              ]
-                                            },
-                                            "footer": {
-                                              "type": "box",
-                                              "layout": "vertical",
-                                              "spacing": "sm",
-                                              #"separator": True,
-                                              "contents": [
-                                                {
-                                                  "type": "spacer",
-                                                  "size": "md"
-                                                },
-                                                {
-                                                  "type": "button",
-                                                  "action": {
-                                                    "type": "uri",
-                                                    "label": "Set Profile",
-                                                    "uri": "line://nv/profile"
+                                            "header": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                  {
+                                                    "type": "text",
+                                                    "align": "start",
+                                                    "color": "#000000",
+                                                    "size": "md",
+                                                    #"spacing": "sm",
+                                                    "weight": "bold",
+                                                    "text": "PROFILE"
+                                                  }
+                                                ]
+                                              },
+                                              "hero": {
+                                                "type": "image",
+                                                "url": "https://syadnysyz2.herokuapp.com/storage/img?url=http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus),
+                                                "size": "full",
+                                                "aspectMode": "cover",
+                                                "aspectRatio": "4:3" #20:13
+                                              },
+                                              "body": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "spacing": "sm",
+                                                "contents": [
+                                                  {
+                                                    "type": "text",
+                                                    "align": "center",
+                                                    "weight": "regular",
+                                                    "color": "#186A3B",
+                                                    "text": "{}".format(contact.displayName)
+                                                    #"flex": 3
                                                   },
-                                                  "style": "link",
-                                                  "height": "md"
-                                                  #"color": "#000000"
-                                                }
-                                              ]
-                                            }
+                                                  {
+                                                    "type": "text",
+                                                    "weight": "regular",
+                                                    "color": "#aaaaaa",
+                                                    "align": "center",
+                                                    "text": "{}".format(contact.statusMessage),
+                                                    "wrap": True
+                                                    #"flex": 5
+                                                  }
+                                                ]
+                                              },
+                                              "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "spacing": "sm",
+                                                #"separator": True,
+                                                "contents": [
+                                                  {
+                                                    "type": "spacer",
+                                                    "size": "sm"
+                                                  },
+                                                  {
+                                                    "type": "button",
+                                                    "action": {
+                                                      "type": "uri",
+                                                      "label": "Set Profile",
+                                                      "uri": "line://nv/profile"
+                                                    },
+                                                    "style": "link",
+                                                    "height": "sm"
+                                                    #"color": "#000000"
+                                                  }
+                                                ]
+                                              }
                                         }
                                     }
                                 ]
