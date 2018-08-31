@@ -748,7 +748,7 @@ def RIDEN_FAST_USER(fast):
                                 msgs+="\n\nTOTAL MEMBER ( %i )" % len(group)
                                 cl.sendText(kirim, msgs)
 
-                        elif rfuText.lower() == 'absen':
+                        elif rfuText.lower() == 'respons':
                             cl.sendMessage(kirim,"Hei[1]",contentMetadata={"MSG_SENDER_NAME":"BOT 1","MSG_SENDER_ICON":"URLIMAGE"})
                             cl.sendMessage(kirim,"Hei[2]",contentMetadata={"MSG_SENDER_NAME":"BOT 2","MSG_SENDER_ICON":"URLIMAGE"})
                             cl.sendMessage(kirim,"Hei[3]",contentMetadata={"MSG_SENDER_NAME":"BOT 3","MSG_SENDER_ICON":"URLIMAGE"})
