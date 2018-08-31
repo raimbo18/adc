@@ -11,7 +11,7 @@ import time, random, asyncio, timeit, sys, json, codecs, threading, glob, re, st
 print ("\n\n============= HI =============\n")
 
 #cl = RIDEN()
-cl = RIDEN(authTokenRFU="Ew30YvWx8HLYgoafox1f.+llTyZYKm78j6la5VJ62dW.ni81UyZYBJHk7n3rFiy26jGrjPdf0drBE8oN1ywKM3k=")
+cl = RIDEN(authTokenRFU="EwjA7BGA87lPrc4L0zU9.grzYgOnTdKvSkrQ7FTsKMq.TmsMcUZV6F1pLmV4TxQ5RDSN8NwxUg/x9iFFmCoYF6s=")
 cl.log("YOUR TOKEN : {}".format(str(cl.authToken)))
 channel = RIDENChannel(cl,cl.server.CHANNEL_ID['LINE_TIMELINE'])
 cl.log("CHANNEL TOKEN : " + str(channel.getChannelResult()))
