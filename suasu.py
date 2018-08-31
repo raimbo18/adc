@@ -749,10 +749,10 @@ def RIDEN_FAST_USER(fast):
                                 cl.sendText(kirim, msgs)
 
                         elif rfuText.lower() == 'all respon':
-                            txt = ['how are you all?','Hai guys','Puy here','hai semua','selamat beraktivitas']
-                            isi = random.choice(txt)
-                            tts = gTTS(text=isi, lang='id', slow=False)
-                            tts.save('temp2.mp3')
+                            #txt = ['how are you all?','Hai guys','Puy here','hai semua','selamat beraktivitas']
+                            #isi = random.choice(txt)
+                            #tts = gTTS(text=isi, lang='id', slow=False)
+                            #tts.save('temp2.mp3')
                             cl.sendMessage(kirim,"◇ Hei",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 1","MSG_SENDER_ICON":"http://pbs.twimg.com/profile_images/1001808982615277568/EPVaEr4P_400x400.jpg"})
                             cl.sendMessage(kirim,"◇ Hei",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 2","MSG_SENDER_ICON":"http://aov.hasagi.gg/wp-content/uploads/2018/06/Sarah-Viloid.jpg"})
                             cl.sendMessage(kirim,"◇ Hei",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 3","MSG_SENDER_ICON":"https://scontent-lga3-1.cdninstagram.com/vp/4e31f6f9f995df211c10c565507b4830/5BDEFCD3/t51.2885-19/s150x150/26158377_969899119824478_5446520578645164032_n.jpg"})
@@ -774,6 +774,23 @@ def RIDEN_FAST_USER(fast):
                             cl.sendMessage(kirim,"◇ Hei",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 19","MSG_SENDER_ICON":"https://2.bp.blogspot.com/-c7jQmeoVxh0/WQM8RQ0w2NI/AAAAAAAAA8M/C13jErjBDT00QLQ9eX-wjY1PP-Y8-8eCgCLcB/s640/Sarah%2BViloid.jpg"})
                             cl.sendMessage(kirim,"◇ Hei",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 20","MSG_SENDER_ICON":"https://scontent-lga3-1.cdninstagram.com/vp/b0da32ae64d5f1bab8a351e4e4ac069b/5C325DB8/t51.2885-15/sh0.08/e35/c0.135.1080.1080/s640x640/39100754_1839310616147166_1453085189692456960_n.jpg"})
                             cl.sendMessage(kirim,"◇ Already Active ◇")
+                            #cl.sendMessage(kirim, isi)
+                            #cl.sendAudio(kirim, 'temp2.mp3')
+
+                        elif rfuText.lower() == 'def respon':
+                            txt = ['how are you all?','Hai guys','Puy here','hai semua','selamat beraktivitas']
+                            isi = random.choice(txt)
+                            tts = gTTS(text=isi, lang='en', slow=False)
+                            tts.save('temp2.mp3')
+                            cl.sendMessage(kirim,"◇ DEF HERE",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 10","MSG_SENDER_ICON":"https://2.bp.blogspot.com/-s7hRHwVUY7c/WcT4qaWOxZI/AAAAAAAADAE/GJa8f584UvcW5fZBGJ12VMRIw1CJ8hX7ACK4BGAYYCw/s400/sarah.jpg"})
+                            cl.sendMessage(kirim,"◇ DEF HERE",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 11","MSG_SENDER_ICON":"https://3.bp.blogspot.com/-lb5rG03TPrg/V47hiQzjmLI/AAAAAAAAAtQ/FxLHG6Sz1jMyz0MXCRvnROTiVN07x8dsgCLcB/s1600/IMG_20160720_091426.jpg"})
+                            cl.sendMessage(kirim,"◇ DEF HERE",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 12","MSG_SENDER_ICON":"https://2.bp.blogspot.com/-Q-xhtNI-bSE/V2ZUo6aQL1I/AAAAAAAAAVk/ENETZiBTIKgP5z9S_iZV1skmiwyF7kPcgCLcB/s1600/Viloid.jpg"})
+                            cl.sendMessage(kirim,"◇ DEF HERE",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 13","MSG_SENDER_ICON":"https://scontent-lax3-1.cdninstagram.com/vp/50a708702c5a70e0b48e76685df541fa/5BFEFBD3/t51.2885-15/sh0.08/e35/s640x640/29094007_125595028282088_4752627668053131264_n.jpg"})
+                            cl.sendMessage(kirim,"◇ DEF HERE",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 14","MSG_SENDER_ICON":"https://s.kaskus.id/images/2017/09/20/6474659_20170920084803.jpg"})
+                            cl.sendMessage(kirim,"◇ DEF HERE",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 15","MSG_SENDER_ICON":"https://i.pinimg.com/originals/54/c4/fb/54c4fb5e52a3847eb6959dc3c05d23e4.jpg"})
+                            cl.sendMessage(kirim,"◇ DEF HERE",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 16","MSG_SENDER_ICON":"https://scontent-atl3-1.cdninstagram.com/vp/761c1a85622c69d9f256d56a6de8260b/5BF890CE/t51.2885-15/e35/22280485_1754719227873455_8068433645670498304_n.jpg"})
+                            cl.sendMessage(kirim,"◇ DEF HERE",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 17","MSG_SENDER_ICON":"https://pbs.twimg.com/profile_images/864425427061792768/EAF1kF5K_400x400.jpg"})
+                            cl.sendMessage(kirim,"◇ DEF Already Active ◇")
                             #cl.sendMessage(kirim, isi)
                             cl.sendAudio(kirim, 'temp2.mp3')
 
@@ -1599,11 +1616,12 @@ def RIDEN_FAST_USER(fast):
                                                     {
                                                         "type": "text",
                                                         "text": "{}".format(str(bcd)),
-                                                        "size": "lg",
+                                                        "size": "md",
                                                         "weight": "regular",
                                                         "align": "start",
                                                         "gravity": "top",
-                                                        "color": "#000000",
+                                                        "color": "#6E2C00",
+                                                        "wrap": True,
                                                     }
                                                 ]
                                             }
