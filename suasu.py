@@ -115,8 +115,7 @@ RfuCctv={
     "Point3":{}
 }
 
-Helpz ="""                  [ Group ]
-    「 Fav 」
+Helpz ="""    「 Fav 」
 Tagall / Mentionall
 Ceksider on/off
  'Ceksider' :
@@ -527,7 +526,7 @@ def RIDEN_FAST_USER(fast):
                         if rfuText.lower() == 'PROSES TRANSISI':
                             cl.sendMessage(0, user)
 
-                        elif rfuText.lower() == "helpz":
+                        elif rfuText.lower() == "help":
                             if user in RfuSekawan or user in Squad["Admin"]:
                                  cl.sendMessage(kirim, str(Helpz))
 
@@ -1609,7 +1608,7 @@ def RIDEN_FAST_USER(fast):
                                                 "contents": [
                                                   {
                                                     "type": "spacer",
-                                                    "size": "xl"
+                                                    "size": "md"
                                                   },
                                                   {
                                                     "type": "button",
@@ -1619,7 +1618,7 @@ def RIDEN_FAST_USER(fast):
                                                       "uri": "http://line.me/ti/p/~yapuy"
                                                     },
                                                     "style": "link",
-                                                    "height": "sm"
+                                                    "height": "md"
                                                     #"color": "#000000"
                                                   }
                                                 ]
@@ -1699,7 +1698,7 @@ def RIDEN_FAST_USER(fast):
                                                 "contents": [
                                                   {
                                                     "type": "spacer",
-                                                    "size": "xl"
+                                                    "size": "md"
                                                   },
                                                   {
                                                     "type": "button",
@@ -1709,7 +1708,7 @@ def RIDEN_FAST_USER(fast):
                                                       "uri": "http://line.me/ti/p/~yapuy"
                                                     },
                                                     "style": "primary",
-                                                    "height": "sm"
+                                                    "height": "md"
                                                     #"color": "#000000"
                                                   }
                                                 ]
@@ -1794,7 +1793,7 @@ def RIDEN_FAST_USER(fast):
                                                 "contents": [
                                                   {
                                                     "type": "spacer",
-                                                    "size": "xl"
+                                                    "size": "md"
                                                   },
                                                   {
                                                     "type": "button",
@@ -1804,7 +1803,7 @@ def RIDEN_FAST_USER(fast):
                                                       "uri": "line://nv/profile"
                                                     },
                                                     "style": "link",
-                                                    "height": "sm"
+                                                    "height": "md"
                                                     #"color": "#000000"
                                                   }
                                                 ]
