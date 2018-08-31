@@ -1758,8 +1758,8 @@ def RIDEN_FAST_USER(fast):
                                             "hero": {
                                               "type": "image",
                                               "url": "https://syadnysyz2.herokuapp.com/storage/img?url=http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus),
-                                              "size": "full",
-                                              "aspectRatio": "20:13"
+                                              "size": "cover",
+                                              "aspectRatio": "rectangle" #20:13
                                             },
                                             "body": {
                                               "type": "box",
