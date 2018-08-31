@@ -125,6 +125,7 @@ Ceksider on/off
 Getsider on/off
 @Me
 Calendar
+Wikipedia: [query]
 Groupinfo
 Url on/off
 Geturl
@@ -212,7 +213,7 @@ def RIDEN_FAST_USER(fast):
                                         "contents": [
                                             {
                                                 "type": "text",
-                                                "text": "   「 Hai 」\n", #% (elapsed_time),
+                                                "   「 Joined Groups 」\n", #% (elapsed_time),
                                                 "size": "md",
                                                 "weight": "bold",
                                                 "align": "center",
@@ -570,7 +571,7 @@ def RIDEN_FAST_USER(fast):
                                                     "contents": [
                                                         {
                                                             "type": "text",
-                                                            "text": "   「 Info Group 」\n", #% (elapsed_time),
+                                                            "text": "   「 Out Group 」\n", #% (elapsed_time),
                                                             "size": "md",
                                                             "weight": "bold",
                                                             "align": "center",
@@ -579,7 +580,7 @@ def RIDEN_FAST_USER(fast):
                                                         },
                                                         {
                                                             "type": "text",
-                                                            "text": "Dadah '{}'".format(str(ginfo.name)),
+                                                            "text": "Dadah '{}' Invite kembali jika Perlu.".format(str(ginfo.name)),
                                                             "size": "sm",
                                                             "align": "center",
                                                             "gravity": "top",
@@ -1480,11 +1481,11 @@ def RIDEN_FAST_USER(fast):
                                                 "contents": [
                                                   {
                                                     "type": "text",
-                                                    "align": "center",
+                                                    "align": "start",
                                                     "color": "#000000",
                                                     "size": "md",
                                                     "weight": "bold",
-                                                    "text": "   「 Wikipedia 」\n", #% (elapsed_time),
+                                                    "text": "WIKIPEDIA", #% (elapsed_time),
                                                   }
                                                 ]
                                               },
@@ -1517,7 +1518,8 @@ def RIDEN_FAST_USER(fast):
                                                       "label": "Creator",
                                                       "uri": "http://line.me/ti/p/~yapuy"
                                                     },
-                                                    "style": "primary"
+                                                    "style": "link",
+                                                    "height": "sm"
                                                     #"color": "#000000"
                                                   }
                                                 ]
