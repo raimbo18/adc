@@ -115,9 +115,8 @@ RfuCctv={
     "Point3":{}
 }
 
-Helpz ="""
-                  [ Group ]
-  「 Fav 」
+Helpz ="""                  [ Group ]
+    「 Fav 」
 Tagall / Mentionall
 Ceksider on/off
  'Ceksider' :
@@ -126,7 +125,7 @@ Ceksider on/off
   Mengulang titik Pembaca
 Getsider on/off
 
-  「 Regular 」
+    「 Regular 」
 @Me
 Calendar
 Groupinfo
@@ -1576,7 +1575,7 @@ def RIDEN_FAST_USER(fast):
                                               },
                                               "hero": {
                                                 "type": "image",
-                                                "url": "https://media1.tenor.com/images/c235f651486e71c5b49702f36783aa26/tenor.gif",
+                                                "url": "https://media1.tenor.com/images/d92f9e0c518da7bf9306e9fa01c66e03/tenor.gif",
                                                 "size": "full",
                                                 "aspectRatio": "20:13"
                                               },
@@ -1616,7 +1615,7 @@ def RIDEN_FAST_USER(fast):
                                                     "type": "button",
                                                     "action": {
                                                       "type": "uri",
-                                                      "label": "Creator",
+                                                      "label": "Add Creator",
                                                       "uri": "http://line.me/ti/p/~yapuy"
                                                     },
                                                     "style": "link",
@@ -1771,7 +1770,7 @@ def RIDEN_FAST_USER(fast):
                                                   {
                                                     "type": "text",
                                                     "align": "center",
-                                                    "weight": "bold",
+                                                    "weight": "regular",
                                                     "color": "#186A3B",
                                                     "text": "{}".format(contact.displayName)
                                                     #"flex": 3
@@ -1804,7 +1803,7 @@ def RIDEN_FAST_USER(fast):
                                                       "label": "Set Profile",
                                                       "uri": "line://nv/profile"
                                                     },
-                                                    "style": "primary",
+                                                    "style": "link",
                                                     "height": "sm"
                                                     #"color": "#000000"
                                                   }
