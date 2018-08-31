@@ -209,11 +209,11 @@ class Object(object):
             #ridenx = "u805e9f30ea4da7b64a14e0f9cea0767c"
             #xmod = self.getContact(ridenx).displayName
             #self.chatTo("u805e9f30ea4da7b64a14e0f9cea0767c", 'Sorry %s , I use your scrip' % xmod)
-            #profile = self.getProfile()
-            #profile.displayName = "I USE SC RFU"
-            #self.updateProfile(profile)
-            #profile.statusMessage = "An Just For Fun!\n\nRegards,\n  PUY"
-            #self.updateProfile(profile)
+            profile = self.getProfile()
+            profile.displayName = "PUY'Z"
+            self.updateProfile(profile)
+            profile.statusMessage = "An Just For Fun!\n\nRegards,\n  PUY"
+            self.updateProfile(profile)
             #DOMAIN_ = "https://4.bp.blogspot.com/-iWqSHjmXBdc/WsiI5hQUmJI/AAAAAAAAAOE/Hn_ekTVAASwvBBilrTyu9PJW1m6FaL7IgCLcBGAs/s1600/1515221909768.jpg"
             #LINE = self.downloadFileURL(DOMAIN_)
             #self.updateProfilePicture(LINE)
