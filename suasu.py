@@ -1644,6 +1644,14 @@ def RIDEN_FAST_USER(fast):
                                                     "color": "#aaaaaa",
                                                     "text": "Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ and U",
                                                     "wrap": True
+                                                  },
+                                                  {
+                                                    "type": "text",
+                                                    "align": "center",
+                                                    "weight": "regular",
+                                                    "color": "#000000",
+                                                    "text": "An Just for Fun Bot.",
+                                                    "wrap": True
                                                   }
                                                 ]
                                               },
@@ -1664,7 +1672,7 @@ def RIDEN_FAST_USER(fast):
                                                       "uri": "http://line.me/ti/p/~yapuy"
                                                     },
                                                     "style": "link",
-                                                    "height": "md"
+                                                    "height": "sm"
                                                     #"color": "#000000"
                                                   }
                                                 ]
