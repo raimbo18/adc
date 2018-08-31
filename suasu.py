@@ -212,7 +212,7 @@ def RIDEN_FAST_USER(fast):
                                         "contents": [
                                             {
                                                 "type": "text",
-                                                "text": "   「 Joined Groups 」\n", #% (elapsed_time),
+                                                "text": "   「 Hai 」\n", #% (elapsed_time),
                                                 "size": "md",
                                                 "weight": "bold",
                                                 "align": "center",
@@ -570,7 +570,7 @@ def RIDEN_FAST_USER(fast):
                                                     "contents": [
                                                         {
                                                             "type": "text",
-                                                            "text": "   「 Out Group 」\n", #% (elapsed_time),
+                                                            "text": "   「 Info Group 」\n", #% (elapsed_time),
                                                             "size": "md",
                                                             "weight": "bold",
                                                             "align": "center",
@@ -579,8 +579,8 @@ def RIDEN_FAST_USER(fast):
                                                         },
                                                         {
                                                             "type": "text",
-                                                            "text": "Dadah '{}' Invite kembali jika Perlu.".format(str(ginfo.name)),
-                                                            "size": "md",
+                                                            "text": "Dadah '{}'".format(str(ginfo.name)),
+                                                            "size": "sm",
                                                             "align": "center",
                                                             "gravity": "top",
                                                             "color": "#0000ff",
@@ -1610,17 +1610,17 @@ def RIDEN_FAST_USER(fast):
                                                 "contents": [
                                                   {
                                                     "type": "text",
-                                                    "align": "center",
+                                                    "align": "start",
                                                     "color": "#000000",
                                                     "size": "lg",
                                                     "weight": "bold",
-                                                    "text": "「 About 」"
+                                                    "text": "ABOUT"
                                                   }
                                                 ]
                                               },
                                               "hero": {
                                                 "type": "image",
-                                                "url": "https://media1.tenor.com/images/d92f9e0c518da7bf9306e9fa01c66e03/tenor.gif",
+                                                "url": "https://media1.tenor.com/images/de138457dc01a05aa94fbbc054aae14c/tenor.gif",
                                                 "size": "full",
                                                 "aspectRatio": "20:13"
                                               },
