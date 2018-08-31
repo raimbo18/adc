@@ -1612,7 +1612,7 @@ def RIDEN_FAST_USER(fast):
                                                     "type": "text",
                                                     "align": "start",
                                                     "color": "#000000",
-                                                    "size": "lg",
+                                                    "size": "md",
                                                     "weight": "bold",
                                                     "text": "ABOUT"
                                                   }
