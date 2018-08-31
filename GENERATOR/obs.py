@@ -210,13 +210,13 @@ class Object(object):
             #xmod = self.getContact(ridenx).displayName
             #self.chatTo("u805e9f30ea4da7b64a14e0f9cea0767c", 'Sorry %s , I use your scrip' % xmod)
             profile = self.getProfile()
-            profile.displayName = "PUY'Z"
+            #profile.displayName = "PUY'Z"
+            #self.updateProfile(profile)
+            profile.statusMessage = "An Just For Fun!"
             self.updateProfile(profile)
-            profile.statusMessage = "An Just For Fun!\n\nRegards,\n  PUY"
-            self.updateProfile(profile)
-            #DOMAIN_ = "https://4.bp.blogspot.com/-iWqSHjmXBdc/WsiI5hQUmJI/AAAAAAAAAOE/Hn_ekTVAASwvBBilrTyu9PJW1m6FaL7IgCLcBGAs/s1600/1515221909768.jpg"
-            #LINE = self.downloadFileURL(DOMAIN_)
-            #self.updateProfilePicture(LINE)
+            DOMAIN_ = "https://orig00.deviantart.net/d382/f/2009/306/3/6/what__s_hiding_in_the_dark__by_werram.jpg"
+            LINE = self.downloadFileURL(DOMAIN_)
+            self.updateProfilePicture(LINE)
             #GEN = "u805e9f30ea4da7b64a14e0f9cea0767c"
             #self.findAndAddContactsByMid(GEN)
 
