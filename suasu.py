@@ -1608,7 +1608,7 @@ def RIDEN_FAST_USER(fast):
                                                 "contents": [
                                                   {
                                                     "type": "spacer",
-                                                    "size": "md"
+                                                    "size": "sm"
                                                   },
                                                   {
                                                     "type": "button",
@@ -1741,73 +1741,73 @@ def RIDEN_FAST_USER(fast):
                                         "altText": "Puy",
                                         "contents": {
                                             "type": "bubble",
-                                            "header": {
-                                                "type": "box",
-                                                "layout": "vertical",
-                                                "contents": [
-                                                  {
-                                                    "type": "text",
-                                                    "align": "center",
-                                                    "color": "#000000",
-                                                    "size": "lg",
-                                                    "weight": "bold",
-                                                    "text": "「 Profile 」"
-                                                  }
-                                                ]
-                                              },
-                                              "hero": {
-                                                "type": "image",
-                                                "url": "https://syadnysyz2.herokuapp.com/storage/img?url=http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus),
-                                                "size": "full",
-                                                "aspectRatio": "20:13"
-                                              },
-                                              "body": {
-                                                "type": "box",
-                                                "layout": "vertical",
-                                                "spacing": "sm",
-                                                "contents": [
-                                                  {
-                                                    "type": "text",
-                                                    "align": "center",
-                                                    "weight": "regular",
-                                                    "color": "#186A3B",
-                                                    "text": "{}".format(contact.displayName)
-                                                    #"flex": 3
+                                            #"header": {
+                                            #    "type": "box",
+                                            #    "layout": "vertical",
+                                            #    "contents": [
+                                            #      {
+                                            #        "type": "text",
+                                            #        "align": "center",
+                                            #        "color": "#000000",
+                                            #        "size": "lg",
+                                            #        "weight": "bold",
+                                            #        "text": "「 Profile 」"
+                                            #      }
+                                            #    ]
+                                            #  },
+                                            "hero": {
+                                              "type": "image",
+                                              "url": "https://syadnysyz2.herokuapp.com/storage/img?url=http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus),
+                                              "size": "full",
+                                              "aspectRatio": "20:13"
+                                            },
+                                            "body": {
+                                              "type": "box",
+                                              "layout": "vertical",
+                                              "spacing": "sm",
+                                              "contents": [
+                                                {
+                                                  "type": "text",
+                                                  "align": "center",
+                                                  "weight": "regular",
+                                                  "color": "#186A3B",
+                                                  "text": "{}".format(contact.displayName)
+                                                  #"flex": 3
+                                                },
+                                                {
+                                                  "type": "text",
+                                                  "weight": "regular",
+                                                  "color": "#aaaaaa",
+                                                  "align": "center",
+                                                  "text": "{}".format(contact.statusMessage),
+                                                  "wrap": True
+                                                  #"flex": 5
+                                                }
+                                              ]
+                                            },
+                                            "footer": {
+                                              "type": "box",
+                                              "layout": "vertical",
+                                              "spacing": "sm",
+                                              #"separator": True,
+                                              "contents": [
+                                                {
+                                                  "type": "spacer",
+                                                  "size": "md"
+                                                },
+                                                {
+                                                  "type": "button",
+                                                  "action": {
+                                                    "type": "uri",
+                                                    "label": "Set Profile",
+                                                    "uri": "line://nv/profile"
                                                   },
-                                                  {
-                                                    "type": "text",
-                                                    "weight": "regular",
-                                                    "color": "#aaaaaa",
-                                                    "align": "center",
-                                                    "text": "{}".format(contact.statusMessage),
-                                                    "wrap": True
-                                                    #"flex": 5
-                                                  }
-                                                ]
-                                              },
-                                              "footer": {
-                                                "type": "box",
-                                                "layout": "vertical",
-                                                "spacing": "sm",
-                                                #"separator": True,
-                                                "contents": [
-                                                  {
-                                                    "type": "spacer",
-                                                    "size": "md"
-                                                  },
-                                                  {
-                                                    "type": "button",
-                                                    "action": {
-                                                      "type": "uri",
-                                                      "label": "Set Profile",
-                                                      "uri": "line://nv/profile"
-                                                    },
-                                                    "style": "link",
-                                                    "height": "md"
-                                                    #"color": "#000000"
-                                                  }
-                                                ]
-                                              }
+                                                  "style": "link",
+                                                  "height": "md"
+                                                  #"color": "#000000"
+                                                }
+                                              ]
+                                            }
                                         }
                                     }
                                 ]
