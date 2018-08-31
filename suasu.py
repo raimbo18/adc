@@ -123,12 +123,13 @@ Ceksider on/off
  'Recheck' :
   Mengulang titik Pembaca
 Getsider on/off
-@Me
-Calendar
-Wikipedia: [query]
 Groupinfo
 Url on/off
 Geturl
+@Me
+Calendar
+Wikipedia: [query]
+Write [query]
 
   「 Token - OFFLINE 」
 Tokenlist/offline
@@ -1449,12 +1450,15 @@ def RIDEN_FAST_USER(fast):
                         elif rfuText.lower().startswith("wikipedia: "):
                             wiki = rfuText.lower().replace("wikipedia: ","")
                             wikipedia.set_lang("id")
-                            pesan=" - "
+                            pesan=" 『 "
                             pesan+=wikipedia.page(wiki).title
-                            pesan+=" -\n"
+                            pesan+=" 』\n"
                             pesan+=wikipedia.summary(wiki, sentences=1)
                             pesan+="\n"
-                            pesan+=wikipedia.page(wiki).url
+                            pesanz="Tap tombol dibawah untuk mengunjungi situs tersebut."
+                            pesanz+=" "
+                            pesann=""
+                            pesann+=wikipedia.page(wiki).url
                             _session = requests.session()
                             image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
                             url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
@@ -1500,6 +1504,14 @@ def RIDEN_FAST_USER(fast):
                                                     "text": "{}".format(str(pesan)),
                                                     #"margin": "sm",
                                                     "wrap": True
+                                                 },
+                                                 {
+                                                    "type": "text",
+                                                    "align": "center",
+                                                    "weight": "regular",
+                                                    "text": "{}".format(str(pesanz)),
+                                                    #"margin": "sm",
+                                                    "wrap": True
                                                   }
                                                 ]
                                               },
@@ -1509,14 +1521,14 @@ def RIDEN_FAST_USER(fast):
                                                 "contents": [
                                                   {
                                                     "type": "spacer",
-                                                    "size": "xl"
+                                                    "size": "sm"
                                                   },
                                                   {
                                                     "type": "button",
                                                     "action": {
                                                       "type": "uri",
-                                                      "label": "Creator",
-                                                      "uri": "http://line.me/ti/p/~yapuy"
+                                                      "label": "Visit here",
+                                                      "uri": "{}".format(str(pesann)),
                                                     },
                                                     "style": "link",
                                                     "height": "sm"
@@ -1531,6 +1543,47 @@ def RIDEN_FAST_USER(fast):
                             data = json.dumps(data)
                             sendPost = _session.post(url, data=data, headers=headers)
 ### Wikipedia Ended ###
+                        elif rfuText.lower().startswith("write "):
+                            bcd = rfuText.lower().replace("write ","")
+                            _session = requests.session()
+                            image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
+                            url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
+                            headers = {
+                                "Host": "game.linefriends.com",
+                                "Content-Type": "application/json",
+                                "User-Agent": "Mozilla/5.0",
+                                "Referer": "https://game.linefriends.com/cdn/jbp-lcs/"
+                            }
+                            data = {
+                                "cc": "UXfpO//D+K6TlqsIBX4AhlamXjhsCUtI1/lWa0zxvp3YA3BlQFwCS8cEKWXBtSJO2cwDtNmbXRA6QPIDBiHbvDOODNoaDQgv6Vno900RzrJ+orAi+vCx9BymUUoebOT3RRtTaJHTYL3AiHLB1MlUdOJvGf7QqPih3p1WUxvWG1v+Tol4W/zAEFdXld5bYneQI3YAZjUn8Ejekfh3qwEHu30f9IayoJs1IwU5C45QMS8Qfu73cln4qH90pgOiQ2Yq15ZJ68/0/Amwy46C5ugyoqookxI4/Oh+Iu+tjT0VtP2Fv5/YoNCKOwbrsw2jHAvL8ACR1qVJj2NesAHkB7fDzC6Ncb0mbxQ5/r1P8oQ1Gbk",
+                                "to": to,
+                                "messages": [
+                                    {
+                                        "type": "flex",
+                                        "altText": "Puy",
+                                        "contents": {
+                                            "type": "bubble",
+                                            "body": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "{}".format(str(bcd)),
+                                                        "size": "lg",
+                                                        "weight": "regular",
+                                                        "align": "start",
+                                                        "gravity": "top",
+                                                        "color": "#000000",
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                            data = json.dumps(data)
+                            sendPost = _session.post(url, data=data, headers=headers)
 ### Runtime ###
                         elif rfuText.lower().startswith("runtime"):
                             eltime = time.time() - mulai
