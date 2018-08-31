@@ -120,23 +120,21 @@ Helpz ="""
   「 Fav 」
 Tagall / Mentionall
 Ceksider on/off
- 'ketik 'Ceksider' : melihat pembaca'
- 'ketik 'Recheck' : mengulang titik pembaca'
+ 'Ceksider' :
+  Melihat Pembaca.
+ 'Recheck' :
+  Mengulang titik Pembaca
 Getsider on/off
 
   「 Regular 」
-Me
+@Me
 Calendar
 Groupinfo
 Url on/off
 Geturl
 
-  「 Tokenlist 」
-Chrome : Token chrome /offline
-Iosipad : Token iosipad /offline
-Win10 : Token win10 /offline
-Deskmac : Token deskmac /offline
-  '''After login, type text !done'''
+  「 Token - OFFLINE 」
+Tokenlist/offline
 
   '''Once Again, An JUST FOR FUN!'''
 
@@ -532,7 +530,7 @@ def RIDEN_FAST_USER(fast):
 
                         elif rfuText.lower() == "helpz":
                             if user in RfuSekawan or user in Squad["Admin"]:
-                                 cl.sendMessage(kirim, str(Help))
+                                 cl.sendMessage(kirim, str(Helpz))
 
                         elif rfuText.lower() == "devlist":
                             if user in RfuSekawan or user in Squad["Admin"]:
@@ -569,6 +567,36 @@ def RIDEN_FAST_USER(fast):
                                     group.preventedJoinByTicket = False
                                     cl.updateGroup(group)
 
+                        #elif rfuText.lower() == '+user': #and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
+                        #  if user in RfuSekawan or user in Squad["Admin"]:
+                        #    if 'MENTION' in msg.contentMetadata.keys()!= None:
+                        #        key = eval(msg.contentMetadata["MENTION"])
+                        #        key1 = key["MENTIONEES"][0]["M"]
+                        #        if key1 not in wait['info']:
+                        #            pay = time.time()
+                        #            nama = str(cl.split(' ')[1])
+                        #            wait['name'][nama] =  {"user":nama,"mid":key1,"pay":pay+60*60*24*120,"runtime":pay,"token":{}}
+                        #            wait['info'][key1] =  '%s' % nama
+                        #            sendMention(msg.to, '@!telah Ditambahkan.','「 ADD SERVICE 」', [key1])
+                        #        else:
+                        #            cl.sendMessage(msg.to, 'Gagal!','「 ADD SERVICE 」', [key1])
+                        #elif rfuText.lower() == '-user': #and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
+                        #  if user in RfuSekawan or user in Squad["Admin"]:
+                        #    if 'MENTION' in msg.contentMetadata.keys()!= None:
+                        #        key = eval(msg.contentMetadata["MENTION"])
+                        #        key1 = key["MENTIONEES"][0]["M"]
+                        #        if key1 in wait['info']:
+                        #            b = wait['info'][key1]
+                        #            os.system('screen -S %s -X kill'%b)
+                        #            h =  wait['name'][b]
+                        #            try:subprocess.getoutput('rm {}.py protect/{}.json'.format(b,b))
+                        #            except:pass
+                        #            del wait['info'][key1]
+                        #            del wait['name'][b]
+                        #            sendMention(msg.to, '@!telah Dihapus dari servis.','「 DEL SERVICE 」', [key1])
+                        #        else:
+                        #            sendMention(msg.to, 'Maaf, @!tidak terdaftar.','「 DEL SERVICE 」', [key1])
+
                         elif rfuText.lower() == 'url off':
                             #if user in RfuSekawan or user in Squad["Admin"]:
                                 if msg.toType == 2:
@@ -599,18 +627,18 @@ def RIDEN_FAST_USER(fast):
                                 else:
                                     gPending = str(len(group.invitee))
                                 if group.preventedJoinByTicket == True:
-                                    gQr = "Closed"
-                                    gTicket = "Nothing"
+                                    gQr = "Mati"
+                                    gTicket = "Mati"
                                 else:
-                                    gQr = "Opened"
+                                    gQr = "Terbuka"
                                     gTicket = "https://line.me/R/ti/g/{}".format(str(line.reissueGroupTicket(group.id)))
                                 cuki = " "
                                 cuki += "Group Name : {}".format(str(group.name))
-                                cuki += "\nID Group : {}".format(group.id)
-                                cuki += "\nCreator : {}".format(str(gCreator))
+                                #cuki += "\nID Group : {}".format(group.id)
+                                cuki += "\nGroup Creator : {}".format(str(gCreator))
                                 cuki += "\nMembers : {}".format(str(len(group.members)))
                                 cuki += "\nPendings Member : {}".format(gPending)
-                                cuki += "\nGroup Ticket : {}".format(gTicket)
+                                cuki += "\nGroup Ticket Status : {}".format(gTicket)
                                 cuki += "\nGroup Qr : {}".format(gQr)
                                 #cl.sendMessage(kirim, str(cuki))
                                 _session = requests.session()
@@ -1131,7 +1159,7 @@ def RIDEN_FAST_USER(fast):
                                     cl.sendText(kirim, str(error))
 #------------ TEMPLATE ------------#
 ### Help ###
-                        elif rfuText.lower().startswith("help"):
+                        elif rfuText.lower().startswith("helpz"):
                             #Help = Help
                             _session = requests.session()
                             image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
@@ -1570,7 +1598,7 @@ def RIDEN_FAST_USER(fast):
                                                     "align": "center",
                                                     "weight": "regular",
                                                     "color": "#aaaaaa",
-                                                    "text": "Supported by ErrorTeam and U",
+                                                    "text": "Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ and U",
                                                     "wrap": True
                                                   }
                                                 ]
@@ -1591,7 +1619,7 @@ def RIDEN_FAST_USER(fast):
                                                       "label": "Creator",
                                                       "uri": "http://line.me/ti/p/~yapuy"
                                                     },
-                                                    "style": "primary",
+                                                    "style": "link",
                                                     "height": "sm"
                                                     #"color": "#000000"
                                                   }
@@ -1681,7 +1709,8 @@ def RIDEN_FAST_USER(fast):
                                                       "label": "Creator",
                                                       "uri": "http://line.me/ti/p/~yapuy"
                                                     },
-                                                    "style": "primary"
+                                                    "style": "primary",
+                                                    "height": "sm"
                                                     #"color": "#000000"
                                                   }
                                                 ]
