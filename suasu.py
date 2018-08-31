@@ -527,8 +527,8 @@ def RIDEN_FAST_USER(fast):
                             cl.sendMessage(0, user)
 
                         elif rfuText.lower() == "help":
-                            if user in RfuSekawan or user in Squad["Admin"]:
-                                 cl.sendMessage(kirim, str(Helpz))
+                            #if user in RfuSekawan or user in Squad["Admin"]:
+                            cl.sendMessage(kirim, str(Helpz))
 
                         elif rfuText.lower() == "devlist":
                             if user in RfuSekawan or user in Squad["Admin"]:
