@@ -213,7 +213,7 @@ def RIDEN_FAST_USER(fast):
                                         "contents": [
                                             {
                                                 "type": "text",
-                                                "   「 Joined Groups 」\n", #% (elapsed_time),
+                                                "text": "「 Joined Groups 」\n", #% (elapsed_time),
                                                 "size": "md",
                                                 "weight": "bold",
                                                 "align": "center",
