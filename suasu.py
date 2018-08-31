@@ -1622,7 +1622,8 @@ def RIDEN_FAST_USER(fast):
                                                 "type": "image",
                                                 "url": "https://media1.tenor.com/images/de138457dc01a05aa94fbbc054aae14c/tenor.gif",
                                                 "size": "full",
-                                                "aspectRatio": "20:13"
+                                                "aspectMode": "cover",
+                                                "aspectRatio": "4:3" #20:13
                                               },
                                               "body": {
                                                 "type": "box",
