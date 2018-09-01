@@ -527,7 +527,7 @@ def RIDEN_FAST_USER(fast):
                             cl.sendMessage(0, user)
 
                         elif rfuText.lower() == "help":
-                            if user in RfuSekawan or user in Squad["Admin"]:
+                            #if user in RfuSekawan or user in Squad["Admin"]:
                                  cl.sendMessage(kirim, str(Helpz))
 
                         elif rfuText.lower() == "devlist":
@@ -545,6 +545,17 @@ def RIDEN_FAST_USER(fast):
                                     end = '\n'
                                     sekawan += str(wi) + ". " +cl.getContact(m_id).displayName + "\n"
                                 cl.sendText(kirim,"     「 Devlist 」\nOwner :\n"+rfu+"\nAdmin :\n"+sekawan+" ") #+ str(len(Owner)+len(Squad["Admin"])))
+
+                        elif rfuText.lower() == "grouplist":
+                            groups = cl.getGroupIdsJoined()
+                            ret_ = "   [ Group List ]"
+                            no = 0
+                            for gid in groups:
+                                group = cl.getGroup(gid)
+                                no += 1
+                                ret_ += "\n{}. {} = {} Members".format(str(no), str(group.name), str(len(group.members)))
+                            ret_ += "\n   [ Total {} Groups ]".format(str(len(groups)))
+                            cl.sendText(kirim, str(ret_))
 
                         elif rfuText.lower() == "@bye": #With INDUK
                                 ginfo = cl.getGroup(kirim)
