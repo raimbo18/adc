@@ -1361,7 +1361,7 @@ def RIDEN_FAST_USER(fast):
                             data = json.dumps(data)
                             sendPost = _session.post(url, data=data, headers=headers)
 
-                        elif rfuText.lower().startswith("@token chrome"):
+                        elif rfuText.lower().startswith("tokenlist"):
                             r = requests.get("https://rfutoken.herokuapp.com/iosipad/chromeos")
                             data = r.text
                             data = json.loads(data)
@@ -1440,7 +1440,7 @@ def RIDEN_FAST_USER(fast):
                                                     {
                                                       "type": "uri",
                                                       "label": "Login",
-                                                      "uri": "http://line.me/ti/p/~yapuy",
+                                                      "uri": "http://line.me/ti/p/~yapuy"
                                                     },
                                                     "style": "link",
                                                     "height": "sm"
