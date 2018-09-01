@@ -1929,27 +1929,27 @@ def RIDEN_FAST_USER(fast):
                                                 "contents": [
                                                   {
                                                     "type": "image",
-                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif",
-                                                    "size": "full",
+                                                    "url": "https://media1.tenor.com/images/8a5b50b68118f35027da5dd8dbc0840d/tenor.gif",
+                                                    "size": "md",
                                                     "aspectMode": "cover",
-                                                    "align": "start",
-                                                    "aspectRatio": "4:3" #20:13
+                                                    "align": "start"
+                                                    #"aspectRatio": "4:3" #20:13
                                                   },
                                                   {
                                                     "type": "image",
-                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif",
-                                                    "size": "full",
+                                                    "url": "https://media.tenor.com/images/d4a0ef6f496d3a1547218fb858d8896e/tenor.gif",
+                                                    "size": "lg",
                                                     "aspectMode": "cover",
-                                                    "align": "start",
-                                                    "aspectRatio": "4:3" #20:13
+                                                    "align": "center"
+                                                    #"aspectRatio": "4:3" #20:13
                                                   },
                                                   {
                                                     "type": "image",
-                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif",
-                                                    "size": "full",
+                                                    "url": "https://media.tenor.com/images/267e955f9e03519022ca28ec2010be6b/tenor.gif",
+                                                    "size": "md",
                                                     "aspectMode": "cover",
-                                                    "align": "start",
-                                                    "aspectRatio": "4:3" #20:13
+                                                    "align": "start"
+                                                    #"aspectRatio": "4:3" #20:13
                                                   }
                                                 ]
                                             }
