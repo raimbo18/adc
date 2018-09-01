@@ -1726,7 +1726,7 @@ def RIDEN_FAST_USER(fast):
                                                     "type": "text",
                                                     "align": "start",
                                                     "color": "#000000",
-                                                    "size": "md",
+                                                    "size": "lg",
                                                     "weight": "bold",
                                                     "text": "ABOUT"
                                                   }
@@ -1734,8 +1734,8 @@ def RIDEN_FAST_USER(fast):
                                               },
                                               "hero": {
                                                 "type": "image",
-                                                "url": "https://media1.tenor.com/images/df9aa86fcb539d54654d0e4d07b5a8f5/tenor.gif",
-                                                "size": "full",
+                                                "url": "https://media1.tenor.com/images/4648a40f88dd6c80e1304ba200f210dc/tenor.gif",
+                                                "size": "md",
                                                 "aspectMode": "cover",
                                                 "aspectRatio": "4:3" #20:13
                                               },
