@@ -1800,7 +1800,7 @@ def RIDEN_FAST_USER(fast):
                             sendPost = _session.post(url, data=data, headers=headers)
 ### About Ended ###
 ### TOKENLIST ###
-                        elif rfuText.lower().startswith("@tokenlist"):
+                        elif rfuText.lower().startswith("@tokenlistzs"):
                             _session = requests.session()
                             image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
                             url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
@@ -1903,7 +1903,7 @@ def RIDEN_FAST_USER(fast):
                             sendPost = _session.post(url, data=data, headers=headers)
 ### TOKENLIST ###
 ### IMAGETEST ###
-                        elif rfuText.lower().startswith("@imagetes"):
+                        elif rfuText.lower().startswith("@tokenlist"):
                             _session = requests.session()
                             image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
                             url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
@@ -1924,20 +1924,32 @@ def RIDEN_FAST_USER(fast):
                                             "type": "bubble",
                                             "header": {
                                                 "type": "box",
-                                                "layout": "horizontal",
-                                                "spacing": "md",
+                                                "layout": "vertical",
+                                                "spacing": "sm",
                                                 "contents": [
                                                   {
                                                     "type": "image",
-                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif"
+                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif",
+                                                    "size": "full",
+                                                    "aspectMode": "cover",
+                                                    "align": "start",
+                                                    "aspectRatio": "4:3" #20:13
                                                   },
                                                   {
                                                     "type": "image",
-                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif"
+                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif",
+                                                    "size": "full",
+                                                    "aspectMode": "cover",
+                                                    "align": "start",
+                                                    "aspectRatio": "4:3" #20:13
                                                   },
                                                   {
                                                     "type": "image",
-                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif"
+                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif",
+                                                    "size": "full",
+                                                    "aspectMode": "cover",
+                                                    "align": "start",
+                                                    "aspectRatio": "4:3" #20:13
                                                   }
                                                 ]
                                             }
