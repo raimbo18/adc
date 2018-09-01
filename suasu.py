@@ -139,6 +139,7 @@ Wikipedia: [query]
 Write [text]
 1Cak
 Instainfo: [username]
+Deviantart [query]
 
   「 Token - OFFLINE 」
 Tokenlist / offline
@@ -2099,12 +2100,12 @@ def RIDEN_FAST_USER(fast):
                                             "body": {
                                                 "type": "box",
                                                 "layout": "vertical",
-                                                "spacing": "md",
+                                                "spacing": "sm",
                                                 "contents": [
                                                   {
                                                     "type": "box",
                                                     "layout": "horizontal",
-                                                    "spacing": "md",
+                                                    "spacing": "sm",
                                                     "contents": [
                                                       {
                                                         "type": "text",
@@ -2129,7 +2130,7 @@ def RIDEN_FAST_USER(fast):
                                                   {
                                                     "type": "box",
                                                     "layout": "horizontal",
-                                                    "spacing": "md",
+                                                    "spacing": "sm",
                                                     "contents": [
                                                       {
                                                         "type": "text",
@@ -2156,6 +2157,84 @@ def RIDEN_FAST_USER(fast):
                             }
                             data = json.dumps(data)
                             sendPost = _session.post(url, data=data, headers=headers)
+
+                        elif rfuText.lower().startswith("haaa"):
+                            _session = requests.session()
+                            image = "https://img00.deviantart.net/14c2/i/2015/238/b/4/we_bare_bears____by_katnay-d978qh9.png"
+                            url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
+                            headers = {
+                                "Host": "game.linefriends.com",
+                                "Content-Type": "application/json",
+                                "User-Agent": "Mozilla/5.0",
+                                "Referer": "https://game.linefriends.com/cdn/jbp-lcs/"
+                            }
+                            data = {
+                                "cc": "UXfpO//D+K6TlqsIBX4AhlamXjhsCUtI1/lWa0zxvp3YA3BlQFwCS8cEKWXBtSJO2cwDtNmbXRA6QPIDBiHbvDOODNoaDQgv6Vno900RzrJ+orAi+vCx9BymUUoebOT3RRtTaJHTYL3AiHLB1MlUdOJvGf7QqPih3p1WUxvWG1v+Tol4W/zAEFdXld5bYneQI3YAZjUn8Ejekfh3qwEHu30f9IayoJs1IwU5C45QMS8Qfu73cln4qH90pgOiQ2Yq15ZJ68/0/Amwy46C5ugyoqookxI4/Oh+Iu+tjT0VtP2Fv5/YoNCKOwbrsw2jHAvL8ACR1qVJj2NesAHkB7fDzC6Ncb0mbxQ5/r1P8oQ1Gbk",
+                                "to": to,
+                                "messages": [
+                                    {
+                                            "type": "template",
+                                            "altText": "Imagez",
+                                            "template": {
+                                                "type": "image_carousel",
+                                                "columns": [
+                                                    {
+                                                        "imageUrl": image,
+                                                        "action": {
+                                                            "type": "uri",
+                                                            "uri": image
+                                                        }
+                                                    },
+                                                    {
+                                                        "imageUrl": image,
+                                                        "action": {
+                                                            "type": "uri",
+                                                            "label": "View",
+                                                            "uri": "line://shop/detail/2000006"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                ]
+                            }
+                            data = json.dumps(data)
+                            sendPost = _session.post(url, data=data, headers=headers)
+                            
+                            
+                        elif rfuText.lower().startswith("deviantart "):
+                            query = rfuText.lower().replace("deviantart ","")
+                            try:
+                                search = rfuText.lower().replace("deviantart ","")
+                                r = requests.get("https://xeonwz.herokuapp.com/images/deviantart.api?q={}".format(search))
+                                data = r.text
+                                data = json.loads(data)
+                                if data["content"] != []:
+                                    items = data["content"]
+                                    path = random.choice(items)
+                                    a = items.index(path)
+                                    b = len(items)
+                                    cl.sendMessage(kirim, "Mencari gambar " + query + " ")
+                                    cl.sendImageWithURL(kirim, str(path))
+                            except Exception as error:
+                                cl.sendMessage(kirim, str(error))
+
+                        elif rfuText.lower().startswith("imageart "):
+                            try:                                   
+                                search = rfuText.lower().replace("imageart ","")
+                                puy1 = requests.get("https://xeonwz.herokuapp.com/images/deviantart.api?q={}".format(search))
+                                data = puy1.text
+                                data = json.loads(data)
+                                if data["content"] != []:
+                                    items = data["content"]
+                                    path = random.choice(items)
+                                    a = items.index(path)
+                                    b = len(items)
+                                    cl.sendMessage(kirim,"Image in #%s From #%s." %(str(a),str(b)))
+                                    cl.sendImageWithURL(kirim, str(path))
+                                    log.info("Art #%s from #%s." %(str(a),str(b)))
+                            except Exception as error:
+                                cl.sendMessage(kirim, str(error))
 ### About Ended ###
 ### IMAGETEST ###
                         elif rfuText.lower().startswith("@tokenlist"):
