@@ -1436,14 +1436,14 @@ def RIDEN_FAST_USER(fast):
                                                       "type": "uri",
                                                       "label": "CHROME",
                                                       "uri": "http://line.me/ti/p/~yapuy" #"{}".format(str(data["qr"]))
-                                                    },
                                                     {
                                                       "type": "uri",
                                                       "label": "Login",
                                                       "uri": "http://line.me/ti/p/~yapuy",
-                                                    }
+                                                    },
                                                     "style": "link"
                                                     #"color": "#000000"
+                                                    }
                                                   }
                                                 ]
                                               }
@@ -1453,6 +1453,18 @@ def RIDEN_FAST_USER(fast):
                             }
                             data = json.dumps(data)
                             sendPost = _session.post(url, data=data, headers=headers)
+
+                                                  #{
+                                                  #  "type": "button",
+                                                  #  "action": {
+                                                  #    "type": "uri",
+                                                  #    "label": "Visit here",
+                                                  #    "uri": "{}".format(str(pesann)),
+                                                  #  },
+                                                  #  "style": "link",
+                                                  #  "height": "sm"
+                                                  #  #"color": "#000000"
+                                                  #}
 ### Token Ended ###
 ### Speed ###
                         elif rfuText.lower().startswith("speed"):
