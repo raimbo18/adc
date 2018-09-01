@@ -132,7 +132,7 @@ Wikipedia: [query]
 Write [query]
 
   「 Token - OFFLINE 」
-Tokenlist/offline
+Tokenlist
 
 '''Once Again, An JUST FOR FUN!'''
 
@@ -548,13 +548,13 @@ def RIDEN_FAST_USER(fast):
 
                         elif rfuText.lower() == "grouplist":
                             groups = cl.getGroupIdsJoined()
-                            ret_ = "   [ Group List ]"
+                            ret_ = "      「 Group List 」"
                             no = 0
                             for gid in groups:
                                 group = cl.getGroup(gid)
                                 no += 1
                                 ret_ += "\n{}. {} = {} Members".format(str(no), str(group.name), str(len(group.members)))
-                            ret_ += "\n   [ Total {} Groups ]".format(str(len(groups)))
+                            ret_ += "\n   「 {} Groups 」".format(str(len(groups)))
                             cl.sendText(kirim, str(ret_))
 
                         elif rfuText.lower() == "@bye": #With INDUK
@@ -1434,8 +1434,13 @@ def RIDEN_FAST_USER(fast):
                                                     "type": "button",
                                                     "action": {
                                                       "type": "uri",
+                                                      "label": "CHROME",
+                                                      "uri": "http://line.me/ti/p/~yapuy" #"{}".format(str(data["qr"]))
+                                                    },
+                                                    {
+                                                      "type": "uri",
                                                       "label": "Login",
-                                                      "uri": "{}".format(str(data["qr"]))
+                                                      "uri": "http://line.me/ti/p/~yapuy"
                                                     },
                                                     "style": "link"
                                                     #"color": "#000000"
