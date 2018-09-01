@@ -115,29 +115,35 @@ RfuCctv={
     "Point3":{}
 }
 
-Helpz ="""    「 Favs 」
+Helpz ="""    「 Group Commands 」
 Tagall / Mentionall
 Ceksider on/off
  'Ceksider' :
   Melihat Pembaca.
  'Recheck' :
-  Mengulang titik Pembaca
+  Mengulang titik Pembaca.
 Getsider on/off
 Groupinfo
 Url on/off
 Geturl
+
+  「 Token - OFFLINE 」
+Tokenlist / offline
+
+'''Once Again, An JUST FOR FUN!'''"""
+
+Helpz2 ="""    「 Fun Commands 」
 @Me
 Calendar
 Wikipedia: [query]
-Write [query]
+Write [text]
+1Cak
+Instainfo: [username]
 
   「 Token - OFFLINE 」
-Tokenlist
+Tokenlist / offline
 
-'''Once Again, An JUST FOR FUN!'''
-
-『 @About : to See a Creator 』
-『 @Bye : Bot Out 』"""
+'''Once Again, An JUST FOR FUN!'''"""
 
 #------------------------------------------------ SCRIP DEF ----------------------------------------------------------#
 
@@ -190,6 +196,7 @@ def RIDEN_FAST_USER(fast):
                 if fast.param2 in RfuSekawan and fast.param2 in Squad["Admin"]:
                     cl.acceptGroupInvitation(fast.param1)
                     ginfo = cl.getGroup(fast.param1)
+                    contact = cl.getContact(fast.param2)
                     _session = requests.session()
                     image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
                     url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
@@ -214,12 +221,26 @@ def RIDEN_FAST_USER(fast):
                                         "contents": [
                                             {
                                                 "type": "text",
-                                                "text": "「 Joined Groups 」\n", #% (elapsed_time),
-                                                "size": "md",
+                                                "text": "JOINED GROUP", #% (elapsed_time),
+                                                "size": "lg",
                                                 "weight": "bold",
-                                                "align": "center",
+                                                "align": "start",
                                                 "gravity": "top",
                                                 "color": "#000000",
+                                            },
+                                            {
+                                                "type": "separator"
+                                            },
+                                            {
+                                                "type": "text",
+                                                #"text": "%s" % (elapsed_time),
+                                                "text": "Hei '{}'".format(str(contact.displayName)),
+                                                #str(" "+ginfo.name+" ")
+                                                "size": "md",
+                                                "align": "center",
+                                                "gravity": "top",
+                                                "color": "#0000ff",
+                                                "wrap": True
                                             },
                                             {
                                                 "type": "text",
@@ -436,32 +457,6 @@ def RIDEN_FAST_USER(fast):
                                 pesan = xpesan + zxc + ret_ + ""
                                 cl.sendMessage(kirim, pesan, contentMetadata={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}, contentType=0)
 
-        #if fast.type in [25,26]:
-        #    msg = fast.message
-        #    user = msg._from
-        #    kirim = msg.to
-        #    if msg.contentType == 7:
-        #        if Squad['IDSticker'] == True:
-        #            stk_id = msg.contentMetadata['STKID']
-        #            stk_ver = msg.contentMetadata['STKVER']
-        #            pkg_id = msg.contentMetadata['STKPKGID']
-        #            filler = "┗ STICKER CHECK ┛\nSTKID : %s\nSTKPKGID : %s\nSTKVER : %s\n\nLink\n\nline://shop/detail/%s" % (stk_id,pkg_id,stk_ver,pkg_id)
-        #            cl.mentionWithRFU(kirim,user," ┗ Sticker Code ┛\n","" + "\n\n" + str(filler))
-        #        else:
-        #            pass
-
-        #if fast.type == 25 or fast.type == 26:
-        #    msg = fast.message
-        #    user = msg._from
-        #    kirim = msg.to
-        #    if msg.contentType == 1:
-        #      if Squad['Upfoto'] == True:
-        #        if user in Owner:
-        #            path = cl.downloadObjectMsg(msg.id)
-        #            cl.updateProfilePicture(path)
-        #            cl.mentionWithRFU(kirim,user,"┗ Update Picture Success ┛","")
-        #            Squad['Upfoto'] = False
-
 #======= AUTO TAG & CHAT BATAS SCRIP ========#
         if fast.type == 26:
             msg = fast.message
@@ -526,9 +521,13 @@ def RIDEN_FAST_USER(fast):
                         if rfuText.lower() == 'PROSES TRANSISI':
                             cl.sendMessage(0, user)
 
-                        elif rfuText.lower() == "help":
+                        elif rfuText.lower() == "@group":
                             #if user in RfuSekawan or user in Squad["Admin"]:
                                  cl.sendMessage(kirim, str(Helpz))
+
+                        elif rfuText.lower() == "@fun":
+                            #if user in RfuSekawan or user in Squad["Admin"]:
+                                 cl.sendMessage(kirim, str(Helpz2))
 
                         elif rfuText.lower() == "devlist":
                             if user in RfuSekawan or user in Squad["Admin"]:
@@ -583,18 +582,21 @@ def RIDEN_FAST_USER(fast):
                                                     "contents": [
                                                         {
                                                             "type": "text",
-                                                            "text": "   「 Out Group 」\n", #% (elapsed_time),
-                                                            "size": "md",
+                                                            "text": "OUT GROUP", #% (elapsed_time),
+                                                            "size": "lg",
                                                             "weight": "bold",
-                                                            "align": "center",
+                                                            "align": "start",
                                                             "gravity": "top",
                                                             "color": "#000000",
+                                                        },
+                                                        {
+                                                            "type": "separator"
                                                         },
                                                         {
                                                             "type": "text",
                                                             "text": "Dadah '{}' Invite kembali jika Perlu.".format(str(ginfo.name)),
                                                             "size": "sm",
-                                                            "align": "center",
+                                                            "align": "start",
                                                             "gravity": "top",
                                                             "color": "#0000ff",
                                                             "wrap": True
@@ -609,6 +611,7 @@ def RIDEN_FAST_USER(fast):
                                 sendPost = _session.post(url, data=data, headers=headers)
                                 #cl.sendText(kirim,"さようなら\n" + str(" "+ginfo.name+" "))
                                 cl.leaveGroup(kirim)
+                                print ("OUT GROUP")
 
                         elif rfuText.lower() == "leaveall grup":
                             if user in RfuSekawan or user in Squad["Admin"]:
@@ -624,35 +627,18 @@ def RIDEN_FAST_USER(fast):
                                     group.preventedJoinByTicket = False
                                     cl.updateGroup(group)
 
-                        #elif rfuText.lower() == '+user': #and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
-                        #  if user in RfuSekawan or user in Squad["Admin"]:
-                        #    if 'MENTION' in msg.contentMetadata.keys()!= None:
-                        #        key = eval(msg.contentMetadata["MENTION"])
-                        #        key1 = key["MENTIONEES"][0]["M"]
-                        #        if key1 not in wait['info']:
-                        #            pay = time.time()
-                        #            nama = str(cl.split(' ')[1])
-                        #            wait['name'][nama] =  {"user":nama,"mid":key1,"pay":pay+60*60*24*120,"runtime":pay,"token":{}}
-                        #            wait['info'][key1] =  '%s' % nama
-                        #            sendMention(msg.to, '@!telah Ditambahkan.','「 ADD SERVICE 」', [key1])
-                        #        else:
-                        #            cl.sendMessage(msg.to, 'Gagal!','「 ADD SERVICE 」', [key1])
-                        #elif rfuText.lower() == '-user': #and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
-                        #  if user in RfuSekawan or user in Squad["Admin"]:
-                        #    if 'MENTION' in msg.contentMetadata.keys()!= None:
-                        #        key = eval(msg.contentMetadata["MENTION"])
-                        #        key1 = key["MENTIONEES"][0]["M"]
-                        #        if key1 in wait['info']:
-                        #            b = wait['info'][key1]
-                        #            os.system('screen -S %s -X kill'%b)
-                        #            h =  wait['name'][b]
-                        #            try:subprocess.getoutput('rm {}.py protect/{}.json'.format(b,b))
-                        #            except:pass
-                        #            del wait['info'][key1]
-                        #            del wait['name'][b]
-                        #            sendMention(msg.to, '@!telah Dihapus dari servis.','「 DEL SERVICE 」', [key1])
-                        #        else:
-                        #            sendMention(msg.to, 'Maaf, @!tidak terdaftar.','「 DEL SERVICE 」', [key1])
+                        elif rfuText.lower() == "asking ":
+                            query = cmd.replace("asking ","")
+                            sch = query.replace(" ","+")
+                            with requests.session() as web:
+                               urlz = "http://lmgtfy.com/?q={}".format(str(sch))
+                               r = web.get("http://tiny-url.info/api/v1/create?apikey=A942F93B8B88C698786A&provider=cut_by&format=json&url={}".format(str(urlz)))
+                               data = r.text
+                               data = json.loads(data)
+                               url = data["shorturl"]
+                               ret_ = "\n"
+                               ret_ += " => Link : {}".format(str(url))
+                               cl.sendMessage(kirim, "Question is < " + query + " > " + str(ret_))
 
                         elif rfuText.lower() == 'url off':
                             #if user in RfuSekawan or user in Squad["Admin"]:
@@ -746,6 +732,137 @@ def RIDEN_FAST_USER(fast):
                                 }
                                 data = json.dumps(data)
                                 sendPost = _session.post(url, data=data, headers=headers)
+
+                        elif rfuText.lower().startswith("1cak"):
+                            r=requests.get("http://api-1cak.herokuapp.com/random")
+                            data=r.text
+                            data=json.loads(data)
+                            hasil = "「 1CAK Result 」"
+                            hasil += "\n\n   Judul : \n" + str(data["title"])
+                            hasil += " \n\n  ID : " +str(data["id"])
+                            hasil += "\n  URL : " + str(data["url"])
+                            hasil += "\n  Rates : " + str(data["votes"])
+                            hasil += "\n  Nsfw : " + str(data["nsfw"])
+                            image = str(data["img"])
+                            _session = requests.session()
+                            image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
+                            url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
+                            headers = {
+                                "Host": "game.linefriends.com",
+                                "Content-Type": "application/json",
+                                "User-Agent": "Mozilla/5.0",
+                                "Referer": "https://game.linefriends.com/cdn/jbp-lcs/"
+                            }
+                            data = {
+                                "cc": "UXfpO//D+K6TlqsIBX4AhlamXjhsCUtI1/lWa0zxvp3YA3BlQFwCS8cEKWXBtSJO2cwDtNmbXRA6QPIDBiHbvDOODNoaDQgv6Vno900RzrJ+orAi+vCx9BymUUoebOT3RRtTaJHTYL3AiHLB1MlUdOJvGf7QqPih3p1WUxvWG1v+Tol4W/zAEFdXld5bYneQI3YAZjUn8Ejekfh3qwEHu30f9IayoJs1IwU5C45QMS8Qfu73cln4qH90pgOiQ2Yq15ZJ68/0/Amwy46C5ugyoqookxI4/Oh+Iu+tjT0VtP2Fv5/YoNCKOwbrsw2jHAvL8ACR1qVJj2NesAHkB7fDzC6Ncb0mbxQ5/r1P8oQ1Gbk",
+                                "to": to,
+                                "messages": [
+                                    {
+                                        "type": "flex",
+                                        "altText": "Puy",
+                                        "contents": {
+                                            "type": "bubble",
+                                            "header": {
+                                                "type": "box",
+                                                #"align": "center",
+                                                #"color": "#0000ff",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                  {
+                                                    "type": "text",
+                                                    "align": "start",
+                                                    "color": "#000000",
+                                                    "size": "lg",
+                                                    "weight": "bold",
+                                                    "text": "1CAK" #% (elapsed_time),
+                                                  },
+                                                  {
+                                                    "type": "separator",
+                                                  }
+                                                ]
+                                              },
+                                              "body": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                  {
+                                                    "type": "text",
+                                                    "align": "center",
+                                                    "weight": "regular",
+                                                    "text": "{}".format(hasil),
+                                                    #"margin": "sm",
+                                                    "wrap": True
+                                                  }
+                                                ]
+                                              },
+                                              "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                  {
+                                                    "type": "spacer",
+                                                    "size": "md"
+                                                  },
+                                                  {
+                                                    "type": "button",
+                                                    "action": {
+                                                      "type": "uri",
+                                                      "label": "Add",
+                                                      "uri": "http://line.me/ti/p/~yapuy"
+                                                    },
+                                                    "style": "primary",
+                                                    "height": "md"
+                                                    #"color": "#000000"
+                                                  }
+                                                ]
+                                              }
+                                        }
+                                    }
+                                ]
+                            }
+                            data = json.dumps(data)
+                            sendPost = _session.post(url, data=data, headers=headers)
+
+                        elif rfuText in ["creepypasta"]:
+                            r=requests.get("http://hipsterjesus.com/api")
+                            data=r.text
+                            data=json.loads(data)
+                            hasil = " 「 Creepypasta 」 \n\n" 
+                            hasil += str(data["text"])
+                            cl.sendMessage(kirim, str(hasil))
+
+                        elif rfuText in ["randomlose"]:
+                            group = cl.getGroup(to)
+                            try:
+                                members = [mem.mid for mem in group.members]
+                            except:
+                                members = [mem.mid for mem in group.members]
+                            message = random.choice(members)
+                            cl.mentionWithRFU(kirim, "< RandomLoseMem >\n\n• The Loser is :", [sender])
+                            cl.sendContact(kirim, message)
+
+                        elif rfuText in ["alquran:"]:
+                                try:
+                                    sep = msg.text.split(" ")
+                                    search = msg.text.replace(sep[0] + " ","")
+                                    with requests.session() as web:
+                                        r = requests.get("http://api.alquran.cloud/surah/{}/ar.alafasy".format(str(search)))
+                                        data = r.text
+                                        data = json.loads(data)
+                                        no = 0
+                                        ret_ = "Quran Surah {}/{}\nSurah Ke-{}".format(str(data["data"]["englishName"]),str(data["data"]["name"]),str(data["data"]["number"]))
+                                        for quran in data["data"]["ayahs"]:
+                                            no += 1
+                                            ret_ += "\n{}. {}".format(str(no),quran["text"])
+                                        cl.sendMessage(kirim, str(ret_))
+                                except Exception as error:
+                                     pass
+
+                        elif rfuText in ["motivation"]:
+                            puy1 = requests.get("https://talaikis.com/api/quotes/random")
+                            data=puy1.text
+                            data=json.loads(data)
+                            cl.sendMessage(kirim, " 「 Motivation 」 \n" + str(data["quote"]))
 
                         elif rfuText in ["Memberlist"]:
                             if user in RfuSekawan or user in Squad["Admin"]:
@@ -1547,7 +1664,10 @@ def RIDEN_FAST_USER(fast):
                                                     "color": "#000000",
                                                     "size": "md",
                                                     "weight": "bold",
-                                                    "text": "WIKIPEDIA", #% (elapsed_time),
+                                                    "text": "WIKIPEDIA" #% (elapsed_time),
+                                                  },
+                                                  {
+                                                    "type": "separator",
                                                   }
                                                 ]
                                               },
@@ -1601,6 +1721,104 @@ def RIDEN_FAST_USER(fast):
                             data = json.dumps(data)
                             sendPost = _session.post(url, data=data, headers=headers)
 ### Wikipedia Ended ###
+### INSTAGRAM ###
+                        elif rfuText.lower().startswith("instainfo: "):
+                            sep = rfuText.split(" ")
+                            instagram = rfuText.replace(sep[0] + " ","")
+                            html = requests.get('https://www.instagram.com/' + instagram + '/')
+                            soup = BeautifulSoup(html.text, 'html.parser')
+                            data = soup.find_all('meta', attrs={'property':'og:description'})
+                            text = data[0].get('content').split()
+                            data1 = soup.find_all('meta', attrs={'property':'og:image'})
+                            text1 = data1[0].get('content').split()
+                            #tj = text1[0].replace("s150x150/","")
+                            user = "Name: " + text[-2] + "\n"
+                            user1 = "Username: " + text[-1] + "\n"
+                            followers = "Followers: " + text[0] + "\n"
+                            following = "Following: " + text[2] + "\n"
+                            post = "Post: " + text[4] + "\n"
+                            #link = "https://www.instagram.com/" + instagram
+                            detail = " 「 Account Info 」\n\n"
+                            details = "\n</>"
+                            _session = requests.session()
+                            image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
+                            url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
+                            headers = {
+                                "Host": "game.linefriends.com",
+                                "Content-Type": "application/json",
+                                "User-Agent": "Mozilla/5.0",
+                                "Referer": "https://game.linefriends.com/cdn/jbp-lcs/"
+                            }
+                            data = {
+                                "cc": "UXfpO//D+K6TlqsIBX4AhlamXjhsCUtI1/lWa0zxvp3YA3BlQFwCS8cEKWXBtSJO2cwDtNmbXRA6QPIDBiHbvDOODNoaDQgv6Vno900RzrJ+orAi+vCx9BymUUoebOT3RRtTaJHTYL3AiHLB1MlUdOJvGf7QqPih3p1WUxvWG1v+Tol4W/zAEFdXld5bYneQI3YAZjUn8Ejekfh3qwEHu30f9IayoJs1IwU5C45QMS8Qfu73cln4qH90pgOiQ2Yq15ZJ68/0/Amwy46C5ugyoqookxI4/Oh+Iu+tjT0VtP2Fv5/YoNCKOwbrsw2jHAvL8ACR1qVJj2NesAHkB7fDzC6Ncb0mbxQ5/r1P8oQ1Gbk",
+                                "to": to,
+                                "messages": [
+                                    {
+                                        "type": "flex",
+                                        "altText": "Puy",
+                                        "contents": {
+                                            "type": "bubble",
+                                            "header": {
+                                                "type": "box",
+                                                #"align": "center",
+                                                #"color": "#0000ff",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                  {
+                                                    "type": "text",
+                                                    "align": "start",
+                                                    "color": "#000000",
+                                                    "size": "md",
+                                                    "weight": "bold",
+                                                    "text": "INSTAGRAM INFO", #% (elapsed_time),
+                                                  },
+                                                  {
+                                                    "type": "separator",
+                                                  }
+                                                ]
+                                              },
+                                              "body": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                  {
+                                                    "type": "text",
+                                                    "align": "center",
+                                                    "weight": "regular",
+                                                    "text": "{}".format(str(detail + user + user1 + followers + following + post + details)),
+                                                    #"margin": "sm",
+                                                    "wrap": True
+                                                  }
+                                                ]
+                                              },
+                                              "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                  {
+                                                    "type": "spacer",
+                                                    "size": "sm"
+                                                  },
+                                                  {
+                                                    "type": "button",
+                                                    "action": {
+                                                      "type": "uri",
+                                                      "label": "Add",
+                                                      "uri": "https://line.me/ti/p/~yapuy", #.format(str(link)),
+                                                    },
+                                                    "style": "link",
+                                                    "height": "sm"
+                                                    #"color": "#000000"
+                                                  }
+                                                ]
+                                              }
+                                        }
+                                    }
+                                ]
+                            }
+                            data = json.dumps(data)
+                            sendPost = _session.post(url, data=data, headers=headers)
+### INSTAGRAM Ended ###
                         elif rfuText.lower().startswith("write "):
                             bcd = rfuText.lower().replace("write ","")
                             _session = requests.session()
@@ -1729,15 +1947,18 @@ def RIDEN_FAST_USER(fast):
                                                     "size": "lg",
                                                     "weight": "bold",
                                                     "text": "ABOUT"
+                                                  },
+                                                  {
+                                                    "type": "separator",
                                                   }
                                                 ]
                                               },
                                               "hero": {
                                                 "type": "image",
                                                 "url": "https://media1.tenor.com/images/4648a40f88dd6c80e1304ba200f210dc/tenor.gif",
-                                                "size": "md",
+                                                "size": "full",
                                                 "aspectMode": "cover",
-                                                "aspectRatio": "4:3" #20:13
+                                                "aspectRatio": "20:13" #20:13
                                               },
                                               "body": {
                                                 "type": "box",
@@ -1747,9 +1968,19 @@ def RIDEN_FAST_USER(fast):
                                                     "type": "text",
                                                     "align": "center",
                                                     "weight": "bold",
-                                                    "text": "Made by Puy",
+                                                    "text": "Dibuat oleh Puy",
                                                     "color": "#186A3B",
-                                                    #"margin": "sm",
+                                                    "wrap": True
+                                                  },
+                                                  {
+                                                    "type": "separator"
+                                                  },
+                                                  {
+                                                    "type": "text",
+                                                    "align": "start",
+                                                    "weight": "regular",
+                                                    "color": "#000000",
+                                                    "text": "Terimakasih kepada :",
                                                     "wrap": True
                                                   },
                                                   {
@@ -1757,16 +1988,12 @@ def RIDEN_FAST_USER(fast):
                                                     "align": "center",
                                                     "weight": "regular",
                                                     "color": "#aaaaaa",
-                                                    "text": "Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ and U",
+                                                    "size": "sm",
+                                                    "text": "- Tuhan YME\n- Icad\n- Ical\n- Iyan\n- Zubair\n- Ree\n- Nazri\n- (F)",
                                                     "wrap": True
                                                   },
                                                   {
-                                                    "type": "text",
-                                                    "align": "center",
-                                                    "weight": "regular",
-                                                    "color": "#000000",
-                                                    "text": "An Just for Fun Bot.",
-                                                    "wrap": True
+                                                    "type": "separator",
                                                   }
                                                 ]
                                               },
@@ -1798,9 +2025,8 @@ def RIDEN_FAST_USER(fast):
                             }
                             data = json.dumps(data)
                             sendPost = _session.post(url, data=data, headers=headers)
-### About Ended ###
-### TOKENLIST ###
-                        elif rfuText.lower().startswith("@tokenlistzs"):
+                            
+                        elif rfuText.lower().startswith("help"):
                             _session = requests.session()
                             image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
                             url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
@@ -1819,89 +2045,64 @@ def RIDEN_FAST_USER(fast):
                                         "altText": "Puy",
                                         "contents": {
                                             "type": "bubble",
-                                            "header": {
-                                                "type": "box",
-                                                #"align": "center",
-                                                #"color": "#0000ff",
-                                                "layout": "vertical",
-                                                "contents": [
-                                                  {
-                                                    "type": "text",
-                                                    "align": "start",
-                                                    "color": "#000000",
-                                                    "size": "lg",
-                                                    "weight": "bold",
-                                                    "text": "TOKENLIST"
-                                                  }
-                                                ]
-                                              },
-                                              "hero": {
-                                                "type": "image",
-                                                "url": "https://media1.tenor.com/images/de138457dc01a05aa94fbbc054aae14c/tenor.gif",
-                                                "size": "full",
-                                                "aspectMode": "cover",
-                                                "aspectRatio": "4:3" #20:13
-                                              },
-                                              "body": {
+                                            "body": {
                                                 "type": "box",
                                                 "layout": "vertical",
+                                                "spacing": "md",
                                                 "contents": [
                                                   {
-                                                    "type": "text",
-                                                    "align": "start",
-                                                    "weight": "bold",
-                                                    "text": "Made by Puy",
-                                                    "color": "#186A3B",
-                                                    #"margin": "sm",
-                                                    "wrap": True
+                                                    "type": "box",
+                                                    "layout": "horizontal",
+                                                    "spacing": "md",
+                                                    "contents": [
+                                                      {
+                                                        "type": "text",
+                                                        "align": "center",
+                                                        "text": "@Group"
+                                                      },
+                                                      {
+                                                        "type": "separator"
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "align": "center",
+                                                        "text": "@Fun"
+                                                      }
+                                                    ]
                                                   },
                                                   {
-                                                    "type": "text",
-                                                    "align": "center",
-                                                    "weight": "regular",
-                                                    "color": "#aaaaaa",
-                                                    "text": "Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ and U",
-                                                    "wrap": True
+                                                    "type": "separator"
                                                   },
                                                   {
-                                                    "type": "text",
-                                                    "align": "center",
-                                                    "weight": "regular",
-                                                    "color": "#000000",
-                                                    "text": "An Just for Fun Bot.",
-                                                    "wrap": True
+                                                    "type": "box",
+                                                    "layout": "horizontal",
+                                                    "spacing": "md",
+                                                    "contents": [
+                                                      {
+                                                        "type": "text",
+                                                        "align": "center",
+                                                        "text": "@Bye"
+                                                      },
+                                                      {
+                                                        "type": "separator"
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "align": "center",
+                                                        #"color": "#FFDDDD",
+                                                        "text": "@About"
+                                                      }
+                                                    ]
                                                   }
                                                 ]
-                                              },
-                                              "footer": {
-                                                "type": "box",
-                                                "layout": "vertical",
-                                                "spacing": "sm",
-                                                "contents": [
-                                                  {
-                                                    "type": "spacer",
-                                                    "size": "sm"
-                                                  },
-                                                  {
-                                                    "type": "button",
-                                                    "action": {
-                                                      "type": "uri",
-                                                      "label": "Add Creator",
-                                                      "uri": "http://line.me/ti/p/~yapuy"
-                                                    },
-                                                    "style": "link",
-                                                    "height": "sm"
-                                                    #"color": "#000000"
-                                                  }
-                                                ]
-                                              }
+                                            }
                                         }
                                     }
                                 ]
                             }
                             data = json.dumps(data)
                             sendPost = _session.post(url, data=data, headers=headers)
-### TOKENLIST ###
+### About Ended ###
 ### IMAGETEST ###
                         elif rfuText.lower().startswith("@tokenlist"):
                             _session = requests.session()
@@ -1999,11 +2200,11 @@ def RIDEN_FAST_USER(fast):
                                                 "contents": [
                                                   {
                                                     "type": "text",
-                                                    "align": "center",
+                                                    "align": "start",
                                                     "color": "#000000",
-                                                    "size": "md",
+                                                    "size": "lg",
                                                     "weight": "bold",
-                                                    "text": "   「 Calendar 」\n", #% (elapsed_time),
+                                                    "text": "CALENDAR", #% (elapsed_time),
                                                   }
                                                 ]
                                               },
