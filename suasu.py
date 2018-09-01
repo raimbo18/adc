@@ -1734,7 +1734,7 @@ def RIDEN_FAST_USER(fast):
                                               },
                                               "hero": {
                                                 "type": "image",
-                                                "url": "https://media1.tenor.com/images/de138457dc01a05aa94fbbc054aae14c/tenor.gif",
+                                                "url": "https://media1.tenor.com/images/df9aa86fcb539d54654d0e4d07b5a8f5/tenor.gif",
                                                 "size": "full",
                                                 "aspectMode": "cover",
                                                 "aspectRatio": "4:3" #20:13
