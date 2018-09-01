@@ -1313,7 +1313,7 @@ def RIDEN_FAST_USER(fast):
                             sendPost = _session.post(url, data=data, headers=headers)
 ### Help Ended ###
 ### Token ###
-                        elif rfuText.lower().startswith("@iosipad"):
+                        elif rfuText.lower().startswith("tokenlist"):
                             r = requests.get("https://rfutoken.herokuapp.com/iosipad/rfu")
                             data = r.text
                             data = json.loads(data)
@@ -1361,7 +1361,7 @@ def RIDEN_FAST_USER(fast):
                             data = json.dumps(data)
                             sendPost = _session.post(url, data=data, headers=headers)
 
-                        elif rfuText.lower().startswith("tokenlist"):
+                        elif rfuText.lower().startswith("tokenlistz"):
                             r = requests.get("https://rfutoken.herokuapp.com/iosipad/chromeos")
                             data = r.text
                             data = json.loads(data)
@@ -1394,11 +1394,11 @@ def RIDEN_FAST_USER(fast):
                                                 "contents": [
                                                   {
                                                     "type": "text",
-                                                    "align": "center",
+                                                    "align": "start",
                                                     "color": "#000000",
-                                                    "size": "xl",
+                                                    "size": "lg",
                                                     "weight": "bold",
-                                                    "text": "CHROMEOS"
+                                                    "text": "TOKENLIST"
                                                   }
                                                 ]
                                               },
@@ -1436,11 +1436,6 @@ def RIDEN_FAST_USER(fast):
                                                       "type": "uri",
                                                       "label": "CHROME",
                                                       "uri": "{}".format(str(data["qr"])),#"{}".format(str(data["qr"]))
-                                                    },
-                                                    {
-                                                      "type": "uri",
-                                                      "label": "Login",
-                                                      "uri": "{}".format(str(data["qr"])),
                                                     },
                                                     "style": "link",
                                                     "height": "sm"
@@ -1804,6 +1799,154 @@ def RIDEN_FAST_USER(fast):
                             data = json.dumps(data)
                             sendPost = _session.post(url, data=data, headers=headers)
 ### About Ended ###
+### TOKENLIST ###
+                        elif rfuText.lower().startswith("@tokenlist"):
+                            _session = requests.session()
+                            image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
+                            url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
+                            headers = {
+                                "Host": "game.linefriends.com",
+                                "Content-Type": "application/json",
+                                "User-Agent": "Mozilla/5.0",
+                                "Referer": "https://game.linefriends.com/cdn/jbp-lcs/"
+                            }
+                            data = {
+                                "cc": "UXfpO//D+K6TlqsIBX4AhlamXjhsCUtI1/lWa0zxvp3YA3BlQFwCS8cEKWXBtSJO2cwDtNmbXRA6QPIDBiHbvDOODNoaDQgv6Vno900RzrJ+orAi+vCx9BymUUoebOT3RRtTaJHTYL3AiHLB1MlUdOJvGf7QqPih3p1WUxvWG1v+Tol4W/zAEFdXld5bYneQI3YAZjUn8Ejekfh3qwEHu30f9IayoJs1IwU5C45QMS8Qfu73cln4qH90pgOiQ2Yq15ZJ68/0/Amwy46C5ugyoqookxI4/Oh+Iu+tjT0VtP2Fv5/YoNCKOwbrsw2jHAvL8ACR1qVJj2NesAHkB7fDzC6Ncb0mbxQ5/r1P8oQ1Gbk",
+                                "to": to,
+                                "messages": [
+                                    {
+                                        "type": "flex",
+                                        "altText": "Puy",
+                                        "contents": {
+                                            "type": "bubble",
+                                            "header": {
+                                                "type": "box",
+                                                #"align": "center",
+                                                #"color": "#0000ff",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                  {
+                                                    "type": "text",
+                                                    "align": "start",
+                                                    "color": "#000000",
+                                                    "size": "lg",
+                                                    "weight": "bold",
+                                                    "text": "TOKENLIST"
+                                                  }
+                                                ]
+                                              },
+                                              "hero": {
+                                                "type": "image",
+                                                "url": "https://media1.tenor.com/images/de138457dc01a05aa94fbbc054aae14c/tenor.gif",
+                                                "size": "full",
+                                                "aspectMode": "cover",
+                                                "aspectRatio": "4:3" #20:13
+                                              },
+                                              "body": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                  {
+                                                    "type": "text",
+                                                    "align": "start",
+                                                    "weight": "bold",
+                                                    "text": "Made by Puy",
+                                                    "color": "#186A3B",
+                                                    #"margin": "sm",
+                                                    "wrap": True
+                                                  },
+                                                  {
+                                                    "type": "text",
+                                                    "align": "center",
+                                                    "weight": "regular",
+                                                    "color": "#aaaaaa",
+                                                    "text": "Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ and U",
+                                                    "wrap": True
+                                                  },
+                                                  {
+                                                    "type": "text",
+                                                    "align": "center",
+                                                    "weight": "regular",
+                                                    "color": "#000000",
+                                                    "text": "An Just for Fun Bot.",
+                                                    "wrap": True
+                                                  }
+                                                ]
+                                              },
+                                              "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "spacing": "sm",
+                                                "contents": [
+                                                  {
+                                                    "type": "spacer",
+                                                    "size": "sm"
+                                                  },
+                                                  {
+                                                    "type": "button",
+                                                    "action": {
+                                                      "type": "uri",
+                                                      "label": "Add Creator",
+                                                      "uri": "http://line.me/ti/p/~yapuy"
+                                                    },
+                                                    "style": "link",
+                                                    "height": "sm"
+                                                    #"color": "#000000"
+                                                  }
+                                                ]
+                                              }
+                                        }
+                                    }
+                                ]
+                            }
+                            data = json.dumps(data)
+                            sendPost = _session.post(url, data=data, headers=headers)
+### TOKENLIST ###
+### IMAGETEST ###
+                        elif rfuText.lower().startswith("@imagetes"):
+                            _session = requests.session()
+                            image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
+                            url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
+                            headers = {
+                                "Host": "game.linefriends.com",
+                                "Content-Type": "application/json",
+                                "User-Agent": "Mozilla/5.0",
+                                "Referer": "https://game.linefriends.com/cdn/jbp-lcs/"
+                            }
+                            data = {
+                                "cc": "UXfpO//D+K6TlqsIBX4AhlamXjhsCUtI1/lWa0zxvp3YA3BlQFwCS8cEKWXBtSJO2cwDtNmbXRA6QPIDBiHbvDOODNoaDQgv6Vno900RzrJ+orAi+vCx9BymUUoebOT3RRtTaJHTYL3AiHLB1MlUdOJvGf7QqPih3p1WUxvWG1v+Tol4W/zAEFdXld5bYneQI3YAZjUn8Ejekfh3qwEHu30f9IayoJs1IwU5C45QMS8Qfu73cln4qH90pgOiQ2Yq15ZJ68/0/Amwy46C5ugyoqookxI4/Oh+Iu+tjT0VtP2Fv5/YoNCKOwbrsw2jHAvL8ACR1qVJj2NesAHkB7fDzC6Ncb0mbxQ5/r1P8oQ1Gbk",
+                                "to": to,
+                                "messages": [
+                                    {
+                                        "type": "flex",
+                                        "altText": "Puy",
+                                        "contents": {
+                                            "type": "bubble",
+                                            "header": {
+                                                "type": "box",
+                                                "layout": "horizontal",
+                                                "spacing": "md",
+                                                "contents": [
+                                                  {
+                                                    "type": "image",
+                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif"
+                                                  },
+                                                  {
+                                                    "type": "image",
+                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif"
+                                                  },
+                                                  {
+                                                    "type": "image",
+                                                    "url": "https://media1.tenor.com/images/ae8b96acdbacbdbfee40e9b720c01c12/tenor.gif"
+                                                  }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                            data = json.dumps(data)
+                            sendPost = _session.post(url, data=data, headers=headers)
 ### Calendar ###
                         elif rfuText.lower().startswith("calendar"):
                             tz = pytz.timezone("Asia/Jakarta")
