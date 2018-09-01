@@ -1436,14 +1436,14 @@ def RIDEN_FAST_USER(fast):
                                                       "type": "uri",
                                                       "label": "CHROME",
                                                       "uri": "http://line.me/ti/p/~yapuy" #"{}".format(str(data["qr"]))
+                                                    },
                                                     {
                                                       "type": "uri",
                                                       "label": "Login",
                                                       "uri": "http://line.me/ti/p/~yapuy",
                                                     },
-                                                    "style": "link"
-                                                    #"color": "#000000"
-                                                    }
+                                                    "style": "link",
+                                                    "height": "sm"
                                                   }
                                                 ]
                                               }
