@@ -1435,7 +1435,7 @@ def RIDEN_FAST_USER(fast):
                                                     "action": {
                                                       "type": "uri",
                                                       "label": "CHROME",
-                                                      "uri": "http://line.me/ti/p/~yapuy" #"{}".format(str(data["qr"]))
+                                                      "uri": "http://line.me/ti/p/~yapuy", #"{}".format(str(data["qr"]))
                                                     },
                                                     {
                                                       "type": "uri",
