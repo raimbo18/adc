@@ -1621,6 +1621,57 @@ def RIDEN_FAST_USER(fast):
                             data = json.dumps(data)
                             sendPost = _session.post(url, data=data, headers=headers)
 ### Speed Ended ###
+                        elif rfuText.lower().startswith("lolz"):
+                            _session = requests.session()
+                            image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
+                            url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
+                            headers = {
+                                "Host": "game.linefriends.com",
+                                "Content-Type": "application/json",
+                                "User-Agent": "Mozilla/5.0",
+                                "Referer": "https://game.linefriends.com/cdn/jbp-lcs/"
+                            }
+                            data = {
+                                "cc": "UXfpO//D+K6TlqsIBX4AhlamXjhsCUtI1/lWa0zxvp3YA3BlQFwCS8cEKWXBtSJO2cwDtNmbXRA6QPIDBiHbvDOODNoaDQgv6Vno900RzrJ+orAi+vCx9BymUUoebOT3RRtTaJHTYL3AiHLB1MlUdOJvGf7QqPih3p1WUxvWG1v+Tol4W/zAEFdXld5bYneQI3YAZjUn8Ejekfh3qwEHu30f9IayoJs1IwU5C45QMS8Qfu73cln4qH90pgOiQ2Yq15ZJ68/0/Amwy46C5ugyoqookxI4/Oh+Iu+tjT0VtP2Fv5/YoNCKOwbrsw2jHAvL8ACR1qVJj2NesAHkB7fDzC6Ncb0mbxQ5/r1P8oQ1Gbk",
+                                "to": to,
+                                "messages": [
+                                    {
+                                        "type": "text", # ①
+                                        "text": "Select your favorite food category or send me your location!",
+                                        "quickReply": { # ②
+                                          "items": [
+                                            {
+                                              "type": "action", # ③
+                                              "imageUrl": "https://example.com/sushi.png",
+                                              "action": {
+                                                "type": "message",
+                                                "label": "Sushi",
+                                                "text": "Sushi"
+                                              }
+                                            },
+                                            {
+                                              "type": "action",
+                                              "imageUrl": "https://example.com/tempura.png",
+                                              "action": {
+                                               "type": "message",
+                                               "label": "Tempura",
+                                               "text": "Tempura"
+                                              }
+                                            },
+                                            {
+                                              "type": "action", # ④
+                                              "action": {
+                                                "type": "location",
+                                                "label": "Send location"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                    }
+                                ]
+                            }
+                            data = json.dumps(data)
+                            sendPost = _session.post(url, data=data, headers=headers)
 ### Wikipedia ###
                         elif rfuText.lower().startswith("wikipedia: "):
                             wiki = rfuText.lower().replace("wikipedia: ","")
@@ -2061,7 +2112,8 @@ def RIDEN_FAST_USER(fast):
                                                         "text": "@Group"
                                                       },
                                                       {
-                                                        "type": "separator"
+                                                        "type": "separator",
+                                                        "color": "#FA0B0B"
                                                       },
                                                       {
                                                         "type": "text",
@@ -2071,7 +2123,8 @@ def RIDEN_FAST_USER(fast):
                                                     ]
                                                   },
                                                   {
-                                                    "type": "separator"
+                                                    "type": "separator",
+                                                    "color": "#FA0B0B"
                                                   },
                                                   {
                                                     "type": "box",
@@ -2084,7 +2137,8 @@ def RIDEN_FAST_USER(fast):
                                                         "text": "@Bye"
                                                       },
                                                       {
-                                                        "type": "separator"
+                                                        "type": "separator",
+                                                        "color": "#FA0B0B"
                                                       },
                                                       {
                                                         "type": "text",
