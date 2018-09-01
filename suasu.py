@@ -1442,8 +1442,10 @@ def RIDEN_FAST_USER(fast):
                                                       "label": "Login",
                                                       "uri": "http://line.me/ti/p/~yapuy"
                                                     },
+                                                    {
                                                     "style": "link",
                                                     "height": "sm"
+                                                    }
                                                   }
                                                 ]
                                               }
