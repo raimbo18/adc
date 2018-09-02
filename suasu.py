@@ -240,7 +240,7 @@ def RIDEN_FAST_USER(fast):
                                                 "text": "Hei '{}'".format(str(contact.displayName)),
                                                 #str(" "+ginfo.name+" ")
                                                 "size": "md",
-                                                "align": "center",
+                                                "align": "start",
                                                 "gravity": "top",
                                                 "color": "#0000ff",
                                                 "wrap": True
@@ -1212,7 +1212,7 @@ def RIDEN_FAST_USER(fast):
                                     contact = cl.getContact(ls)
                                 puy = rfuText.split(" ")
                                 puy = rfuText.replace(puy[0]+" "," ")
-                                puy = puy.split('*')
+                                puy = puy.split(' ')
                                 txt = str(puy[0])
                                 #xz = rfuText.replace(names.split(":")[0]+" ","")
                                 #print(xz)
