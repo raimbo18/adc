@@ -1210,9 +1210,9 @@ def RIDEN_FAST_USER(fast):
                                         lists.append(mention['M'])
                                 for ls in lists:
                                     contact = cl.getContact(ls)
-                                puy = rfuText.split(" ")
+                                puy = rfuText.split(":")
                                 puy = rfuText.replace(puy[0]+" "," ")
-                                puy = puy.split('')
+                                puy = puy.split('*')
                                 txt = str(puy[0])
                                 #xz = rfuText.replace(names.split(":")[0]+" ","")
                                 #print(xz)
