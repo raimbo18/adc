@@ -11,8 +11,9 @@ import time, random, asyncio, timeit, sys, json, codecs, threading, glob, re, st
 print ("\n\n============= HI =============\n")
 
 #cl = RIDEN()
-cl = RIDEN(authTokenRFU="Ewf9dhbOZOVz2Tjmxvh3.Ri4/RX6YPvDWVXddSJv8mW.pXW2aITg+vn3GaZlSkonXf8zqwUbbuCfU6/PPo1VfPE=")
-#EwjA7BGA87lPrc4L0zU9.grzYgOnTdKvSkrQ7FTsKMq.TmsMcUZV6F1pLmV4TxQ5RDSN8NwxUg/x9iFFmCoYF6s=
+cl = RIDEN(authTokenRFU="EwjA7BGA87lPrc4L0zU9.grzYgOnTdKvSkrQ7FTsKMq.TmsMcUZV6F1pLmV4TxQ5RDSN8NwxUg/x9iFFmCoYF6s=")
+#EwjA7BGA87lPrc4L0zU9.grzYgOnTdKvSkrQ7FTsKMq.TmsMcUZV6F1pLmV4TxQ5RDSN8NwxUg/x9iFFmCoYF6s= #PUYZ
+#Ewf9dhbOZOVz2Tjmxvh3.Ri4/RX6YPvDWVXddSJv8mW.pXW2aITg+vn3GaZlSkonXf8zqwUbbuCfU6/PPo1VfPE= #PUY
 cl.log("YOUR TOKEN : {}".format(str(cl.authToken)))
 channel = RIDENChannel(cl,cl.server.CHANNEL_ID['LINE_TIMELINE'])
 cl.log("CHANNEL TOKEN : " + str(channel.getChannelResult()))
@@ -388,7 +389,7 @@ def RIDEN_FAST_USER(fast):
 
 #------------------- ( 2 ) ------------------------- PEMBATAS SCRIP ------------------------------------------------#
 
-        if fast.type == 25:
+        if fast.type == 26:
             msg = fast.message
             text = msg.text
             rfuText = msg.text
@@ -460,7 +461,7 @@ def RIDEN_FAST_USER(fast):
                                 cl.sendMessage(kirim, pesan, contentMetadata={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}, contentType=0)
 
 #======= AUTO TAG & CHAT BATAS SCRIP ========#
-        if fast.type == 25:
+        if fast.type == 26:
             msg = fast.message
             user = msg._from
             kirim = msg.to
@@ -479,7 +480,7 @@ def RIDEN_FAST_USER(fast):
                                   cl.mentionWithRFU(kirim,user,"","" +str(ret_))
                                   break
 
-        if fast.type == 25:
+        if fast.type == 26:
             msg = fast.message
             user = msg._from
             kirim = msg.to
@@ -501,7 +502,7 @@ def RIDEN_FAST_USER(fast):
 
 #------------------- ( 3 ) ------------------------- PEMBATAS SCRIP ------------------------------------------------#
 
-        if fast.type == 25: #or fast.type == 26:
+        if fast.type == 25 or fast.type == 26:
             msg = fast.message
             text = msg.text
             rfuText = msg.text
@@ -1971,11 +1972,11 @@ def RIDEN_FAST_USER(fast):
                                                     {
                                                         "type": "text",
                                                         "text": "{}".format(str(bcd)),
-                                                        "size": "md",
+                                                        "size": "sm",
                                                         "weight": "regular",
                                                         "align": "start",
                                                         "gravity": "top",
-                                                        "color": "#6E2C00",
+                                                        "color": "#E261FF",
                                                         "wrap": True,
                                                     }
                                                 ]
