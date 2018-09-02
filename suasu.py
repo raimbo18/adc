@@ -1198,7 +1198,7 @@ def RIDEN_FAST_USER(fast):
                                 #print(xz)
                                 cl.sendMessage(kirim,xz, "◇ Hei",contentMetadata={"MSG_SENDER_NAME":"PUY'Z 1","MSG_SENDER_ICON":"http://pbs.twimg.com/profile_images/1001808982615277568/EPVaEr4P_400x400.jpg"})
 
-                        elif rfuText.lower().startswith("say"):
+                        elif rfuText.lower().startswith("say "):
                           if user in Owner:
                             if "MENTION" in msg.contentMetadata.keys() != None:
                                 names = re.findall(r'@(\w+)', msg.text)
@@ -1210,7 +1210,7 @@ def RIDEN_FAST_USER(fast):
                                         lists.append(mention['M'])
                                 for ls in lists:
                                     contact = cl.getContact(ls)
-                                puy = rfuText.split(":")
+                                puy = rfuText.split(" ")
                                 puy = rfuText.replace(puy[0]+" "," ")
                                 puy = puy.split('*')
                                 txt = str(puy[0])
