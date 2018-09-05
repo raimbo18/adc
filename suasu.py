@@ -6,7 +6,7 @@ from gtts import gTTS
 from googletrans import Translator
 from multiprocessing import Pool, Process
 #from ffmpy import FFmpeg
-import time, random, asyncio, timeit, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, urllib, urllib.parse, ast, pytz, wikipedia, pafy, youtube_dl, atexit
+import time, random, asyncio, timeit, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, urllib, urllib3, urllib.parse, ast, pytz, wikipedia, pafy, youtube_dl, atexit
 
 print ("\n\nLOGINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN\n")
 
@@ -118,16 +118,56 @@ PuyCctv={
 
 Helpz ="""    「 Group Commands 」
 Tagall / Mentionall
-Ceksider on/off
-Ceksider2 on/off
-Groupinfo
+Ceksider
+Gsteal
 Url on/off
-Geturl
-
-  「 Token - OFFLINE 」
-Tokenlist / offline
 
 '''Once Again, An JUST FOR FUN!'''"""
+
+Gsteal ="""    「 Group 」
+Type: Steal Group Information
+
+  1. Foto Grup
+  2. Nama Grup
+  3. Pembuat Grup
+  4. Anggota Grup
+  5. Url
+
+Penggunaan: Gsteal 「number」
+Contoh: Gsteal 1"""
+
+Siderz ="""    「 Group 」
+Type: Ceksider
+
+  1. Manual Lurking
+  2. Auto Lurking
+
+Menjalankan: Ceksider 「number」 on/off
+Contoh: Ceksider 2 on"""
+
+Helpadmin ="""    「 Own/Adm Commands 」
+Hapus chat dimari
+Mulai ulang bot
+Bot keluar
+Glist
+Tolak Undangan
+Broadcastbc:
+Contactbc:
+All respon / Def respon
+Leave on/off
+Autoreject on/off
+Autojoin on/off
+Jointicket on/off
+Changeleave: [query]
+Welcomsg on/off
+Changewelcome: [query]
+Status
+Refreshprofile
+Refresh
+Adminadd:on/off
+Adminrem:on/off
+Devlist
+Tokenlist"""
 
 Helpz2 ="""    「 Fun Commands 」
 @Me
@@ -135,7 +175,7 @@ Calendar
 Wikipedia: [query」
 Write 「text」
 1Cak
-Instainfo: 「username」
+Instainfo1: 「username」
 Instainfo2 「username」
 Deviantart 「query」
 Artinama1 「nama」
@@ -143,7 +183,7 @@ Artinama2 「nama」
 Wallhd 「query」
 Drakor 「query」
 Drakor2 「query」
-Myrobot 「nama」
+Cekrobot 「nama」
 Creepypasta
 
 '''Once Again, An JUST FOR FUN!'''"""
@@ -528,6 +568,18 @@ def RIDEN_FAST_USER(fast):
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                  cl.sendMessage(kirim, str(Helpz))
 
+                        elif PuyText.lower() == "ceksider":
+                            #if user in PuySekawan or user in PUYWAIT["Admin"]:
+                                 cl.sendMessage(kirim, str(Siderz))
+
+                        elif PuyText.lower() == "gsteal":
+                            #if user in PuySekawan or user in PUYWAIT["Admin"]:
+                                 cl.sendMessage(kirim, str(Gsteal))
+
+                        elif PuyText.lower() == "@admin":
+                            if user in PuySekawan or user in PUYWAIT["Admin"]:
+                                 cl.sendMessage(kirim, str(Helpadmin))
+
                         elif PuyText.lower() == "@fun":
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                  cl.sendMessage(kirim, str(Helpz2))
@@ -548,7 +600,7 @@ def RIDEN_FAST_USER(fast):
                                     sekawan += str(wi) + ". " +cl.getContact(m_id).displayName + "\n"
                                 cl.sendText(kirim,"     「 Devlist 」\nOwner :\n"+Puy+"\nAdmin :\n"+sekawan+" ") #+ str(len(Owner)+len(PUYWAIT["Admin"])))
 
-                        elif PuyText.lower() == "grouplist":
+                        elif PuyText.lower() == "glist":
                             groups = cl.getGroupIdsJoined()
                             ret_ = "      「 Group List 」"
                             no = 0
@@ -650,19 +702,35 @@ def RIDEN_FAST_USER(fast):
                                     group.preventedJoinByTicket = True
                                     cl.updateGroup(group)
 
-                        elif PuyText.lower() == 'geturl':
-                          #if user in PuySekawan or user in PUYWAIT["Admin"]:
-                            if msg.toType == 2:
-                                grup = cl.getGroup(kirim)
-                                if grup.preventedJoinByTicket == True:
-                                   grup.preventedJoinByTicket == False
-                                   cl.updateGroup(grup)
-                                set = cl.reissueGroupTicket(kirim)
-                                cl.sendMessage(kirim, "  Group Ticket : \nhttps://line.me/R/ti/g/{}".format(str(set)))
-                                #else:
-                                    #cl.sendMessage(kirim, "Ketik Link on Dulu kaka")
+                        elif PuyText.lower() == 'gsteal 1':
+                                group = cl.getGroup(kirim)
+                                path = "http://dl.profile.line-cdn.net/" + group.pictureStatus
+                                try:
+                                    gCreator = group.creator.displayName
+                                except:
+                                    gCreator = "Not found"
+                                if group.invitee is None:
+                                    gPending = "0"
+                                else:
+                                    gPending = str(len(group.invitee))
+                                if group.preventedJoinByTicket == True:
+                                    gQr = "Mati"
+                                    gTicket = "Mati"
+                                else:
+                                    gQr = "Terbuka"
+                                    gTicket = "https://line.me/R/ti/g/{}".format(str(cl.reissueGroupTicket(group.id)))
+                                cuki = "Below"
+                                #cuki += "Group Name : {}".format(str(group.name))
+                                #cuki += "\nID Group : {}".format(group.id)
+                                #cuki += "\nGroup Creator : {}".format(str(gCreator))
+                                #cuki += "\nMembers : {}".format(str(len(group.members)))
+                                #cuki += "\nPendings Member : {}".format(gPending)
+                                #cuki += "\nGroup Ticket Status : {}".format(gTicket)
+                                #cuki += "\nGroup Qr : {}".format(gQr)
+                                #cl.sendMessage(kirim, str(cuki))
+                                cl.sendImageWithURL(kirim, path)
 
-                        elif PuyText.lower() == 'groupinfo':
+                        elif PuyText.lower() == 'gsteal 2':
                                 group = cl.getGroup(kirim)
                                 try:
                                     gCreator = group.creator.displayName
@@ -677,64 +745,81 @@ def RIDEN_FAST_USER(fast):
                                     gTicket = "Mati"
                                 else:
                                     gQr = "Terbuka"
-                                    gTicket = "https://line.me/R/ti/g/{}".format(str(line.reissueGroupTicket(group.id)))
-                                cuki = " "
-                                cuki += "Group Name : {}".format(str(group.name))
+                                    gTicket = "https://line.me/R/ti/g/{}".format(str(cl.reissueGroupTicket(group.id)))
+                                cuki = ""
+                                cuki += "Nama Grup: {}".format(str(group.name))
                                 #cuki += "\nID Group : {}".format(group.id)
-                                cuki += "\nGroup Creator : {}".format(str(gCreator))
-                                cuki += "\nMembers : {}".format(str(len(group.members)))
-                                cuki += "\nPendings Member : {}".format(gPending)
-                                cuki += "\nGroup Ticket Status : {}".format(gTicket)
-                                cuki += "\nGroup Qr : {}".format(gQr)
-                                #cl.sendMessage(kirim, str(cuki))
-                                _session = requests.session()
-                                image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
-                                url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
-                                headers = {
-                                    "Host": "game.linefriends.com",
-                                    "Content-Type": "application/json",
-                                    "User-Agent": "Mozilla/5.0",
-                                    "Referer": "https://game.linefriends.com/cdn/jbp-lcs/"
-                                }
-                                data = {
-                                    "cc": "UXfpO//D+K6TlqsIBX4AhlamXjhsCUtI1/lWa0zxvp3YA3BlQFwCS8cEKWXBtSJO2cwDtNmbXRA6QPIDBiHbvDOODNoaDQgv6Vno900RzrJ+orAi+vCx9BymUUoebOT3RRtTaJHTYL3AiHLB1MlUdOJvGf7QqPih3p1WUxvWG1v+Tol4W/zAEFdXld5bYneQI3YAZjUn8Ejekfh3qwEHu30f9IayoJs1IwU5C45QMS8Qfu73cln4qH90pgOiQ2Yq15ZJ68/0/Amwy46C5ugyoqookxI4/Oh+Iu+tjT0VtP2Fv5/YoNCKOwbrsw2jHAvL8ACR1qVJj2NesAHkB7fDzC6Ncb0mbxQ5/r1P8oQ1Gbk",
-                                    "to": to,
-                                    "messages": [
-                                        {
-                                            "type": "flex",
-                                            "altText": "Puy",
-                                            "contents": {
-                                                "type": "bubble",
-                                                "body": {
-                                                    "type": "box",
-                                                    "layout": "vertical",
-                                                    "contents": [
-                                                        {
-                                                            "type": "text",
-                                                            "text": "   「 Info Group 」\n", #% (elapsed_time),
-                                                            "size": "md",
-                                                            "weight": "bold",
-                                                            "align": "center",
-                                                            "gravity": "top",
-                                                            "color": "#000000",
-                                                        },
-                                                        {
-                                                            "type": "text",
-                                                            "text": "{}".format(str(cuki)),
-                                                            "size": "sm",
-                                                            "align": "center",
-                                                            "gravity": "top",
-                                                            "color": "#0000ff",
-                                                            "wrap": True
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                                data = json.dumps(data)
-                                sendPost = _session.post(url, data=data, headers=headers)
+                                #cuki += "\nGroup Creator : {}".format(str(gCreator))
+                                #cuki += "\nMembers : {}".format(str(len(group.members)))
+                                #cuki += "\nPendings Member : {}".format(gPending)
+                                #cuki += "\nGroup Ticket Status : {}".format(gTicket)
+                                #cuki += "\nGroup Qr : {}".format(gQr)
+                                cl.sendMessage(kirim, str(cuki))
+
+                        elif PuyText.lower() == 'gsteal 3':
+                                group = cl.getGroup(kirim)
+                                try:
+                                    gCreator = group.creator.displayName
+                                except:
+                                    gCreator = "Not found"
+                                if group.invitee is None:
+                                    gPending = "0"
+                                else:
+                                    gPending = str(len(group.invitee))
+                                if group.preventedJoinByTicket == True:
+                                    gQr = "Mati"
+                                    gTicket = "Mati"
+                                else:
+                                    gQr = "Terbuka"
+                                    gTicket = "https://line.me/R/ti/g/{}".format(str(cl.reissueGroupTicket(group.id)))
+                                cuki = ""
+                                #cuki += "Nama Grup: {}".format(str(group.name))
+                                #cuki += "\nID Group : {}".format(group.id)
+                                cuki += "Pembuat Grup: {}".format(str(gCreator))
+                                #cuki += "\nMembers : {}".format(str(len(group.members)))
+                                #cuki += "\nPendings Member : {}".format(gPending)
+                                #cuki += "\nGroup Ticket Status : {}".format(gTicket)
+                                #cuki += "\nGroup Qr : {}".format(gQr)
+                                cl.sendMessage(kirim, str(cuki))
+                                cl.sendContact(kirim, group.creator.mid)
+
+                        elif PuyText.lower() == 'gsteal 4':
+                                group = cl.getGroup(kirim)
+                                try:
+                                    gCreator = group.creator.displayName
+                                except:
+                                    gCreator = "Not found"
+                                if group.invitee is None:
+                                    gPending = "0"
+                                else:
+                                    gPending = str(len(group.invitee))
+                                if group.preventedJoinByTicket == True:
+                                    gQr = "Mati"
+                                    gTicket = "Mati"
+                                else:
+                                    gQr = "Terbuka"
+                                    gTicket = "https://line.me/R/ti/g/{}".format(str(cl.reissueGroupTicket(group.id)))
+                                cuki = ""
+                                #cuki += "Nama Grup: {}".format(str(group.name))
+                                #cuki += "\nID Group : {}".format(group.id)
+                                #cuki += "\nGroup Creator : {}".format(str(gCreator))
+                                cuki += "Anggota: {}".format(str(len(group.members)))
+                                #cuki += "\nPendings Member : {}".format(gPending)
+                                #cuki += "\nGroup Ticket Status : {}".format(gTicket)
+                                #cuki += "\nGroup Qr : {}".format(gQr)
+                                cl.sendMessage(kirim, str(cuki))
+
+                        elif PuyText.lower() == 'gsteal 5':
+                          #if user in PuySekawan or user in PUYWAIT["Admin"]:
+                            if msg.toType == 2:
+                                grup = cl.getGroup(kirim)
+                                if grup.preventedJoinByTicket == True:
+                                   grup.preventedJoinByTicket == False
+                                   cl.updateGroup(grup)
+                                set = cl.reissueGroupTicket(kirim)
+                                cl.sendMessage(kirim, "Grup Url \nhttps://line.me/R/ti/g/{}".format(str(set)))
+                                #else:
+                                    #cl.sendMessage(kirim, "Ketik Link on Dulu kaka")
 
                         elif PuyText.lower().startswith("1cak"):
                             r=requests.get("http://api-1cak.herokuapp.com/random")
@@ -874,9 +959,9 @@ def RIDEN_FAST_USER(fast):
                                 except Exception as error:
                                      pass
 
-                        elif PuyText.lower().startswith("myrobot "):
+                        elif PuyText.lower().startswith("cekrobot "):
                             if msg.toType == 2:
-                                url = PuyText.lower().replace("myrobot ","")
+                                url = PuyText.lower().replace("cekrobot ","")
                                 urlnya = 'https://robohash.org/'+url+'.png'
                                 cl.sendMessage(kirim,"  「 Fun 」\nType: MyRobot\nIni adalah robot kamu,")
                                 cl.sendImageWithURL(kirim,urlnya)
@@ -975,7 +1060,7 @@ def RIDEN_FAST_USER(fast):
                             #cl.sendMessage(kirim, isi)
                             cl.sendAudio(kirim, 'temp2.mp3')
 
-                        elif PuyText.lower() == 'ceksider on':
+                        elif PuyText.lower() == 'ceksider 1 on':
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                 tz = pytz.timezone("Asia/Jakarta")
                                 timeNow = datetime.now(tz=tz)
@@ -1002,7 +1087,7 @@ def RIDEN_FAST_USER(fast):
                                         PUYWAIT['ROM'][kirim] = {}
                                         with open('sider.json', 'w') as fp:
                                             json.dump(PUYWAIT, fp, sort_keys=True, indent=4)
-                                            cl.sendMessage(kirim,"  「 Reader Notify 」\nIs now Active!")
+                                            cl.sendMessage(kirim,"  「 Group 」\nType: Ceksider1\nSekarang diaktifkan.\nKetik /csider untuk melihat titik pembaca.")
                                 else:
                                     try:
                                         del read['readPoint'][kirim]
@@ -1016,9 +1101,9 @@ def RIDEN_FAST_USER(fast):
                                     PUYWAIT['ROM'][kirim] = {}
                                     with open('sider.json', 'w') as fp:
                                         json.dump(PUYWAIT, fp, sort_keys=True, indent=4)
-                                        cl.sendMessage(kirim, "  「 Reader Notify 」\n\nKetik Ceksider untuk melihat Pembaca\nketik Recheck untuk mengulang titik Pembaca.\nSetting Reader Point!\n  At: " + readTime)
+                                        cl.sendMessage(kirim, "  「 Group 」\nType: Ceksider1\n\nKetik /csider untuk melihat Pembaca\nKetik CekUlang untuk mengulang titik Pembaca.") #+ readTime)
 
-                        elif PuyText.lower() == 'ceksider off':
+                        elif PuyText.lower() == 'ceksider 1 off':
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                 tz = pytz.timezone("Asia/Jakarta")
                                 timeNow = datetime.now(tz=tz)
@@ -1033,7 +1118,7 @@ def RIDEN_FAST_USER(fast):
                                     if bln == str(k): bln = bulan[k-1]
                                 readTime = " " + timeNow.strftime('%H:%M:%S') + " "
                                 if kirim not in PUYWAIT['readPoint']:
-                                    cl.sendMessage(kirim,"  「 Reader Notify 」\nIs now Unactive!")
+                                    cl.sendMessage(kirim,"  「 Group 」\nType: Ceksider1\nSekarang dinonaktifkan.")
                                 else:
                                     try:
                                             del PUYWAIT['readPoint'][kirim]
@@ -1041,9 +1126,9 @@ def RIDEN_FAST_USER(fast):
                                             del PUYWAIT['readTime'][kirim]
                                     except:
                                           pass
-                                    cl.sendMessage(kirim, "  「 Reader Notify 」\nDeleting Reader Point!\n  At: " + readTime)
+                                    cl.sendMessage(kirim, "  「 Group 」\nType: Ceksider1\nMenghapus titik pembaca.") #+ readTime)
 
-                        elif PuyText.lower() == 'recheck':
+                        elif PuyText.lower() == 'cekulang':
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                 tz = pytz.timezone("Asia/Jakarta")
                                 timeNow = datetime.now(tz=tz)
@@ -1065,11 +1150,11 @@ def RIDEN_FAST_USER(fast):
                                         PUYWAIT["ROM"][kirim] = {}
                                     except:
                                         pass
-                                    cl.sendMessage(kirim, "  「 Reader Notify 」\nResetting Readerchecker!\n  At: " + readTime)
+                                    cl.sendMessage(kirim, "  「 Group 」\nType: Ceksider1\nMengulang titik pembaca.")# + readTime)
                                 else:
-                                    cl.sendMessage(kirim, "  「 Reader Notify 」\nGot Invalid,\n  '''Checkread on''' first!")
+                                    cl.sendMessage(kirim, "  「 Group 」\nType: Ceksider1\nBelum diaktifkan\n  'Ceksider 1 on' dahulu.")
 
-                        elif PuyText.lower() == 'ceksider':
+                        elif PuyText.lower() == '/csider':
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                 tz = pytz.timezone("Asia/Jakarta")
                                 timeNow = datetime.now(tz=tz)
@@ -1104,17 +1189,17 @@ def RIDEN_FAST_USER(fast):
                                         zx = {'S':xlen, 'E':xlen2, 'M':cmem[x].mid}
                                         zx2.append(zx)
                                         zxc += pesan2
-                                    text = xpesan+ zxc + "  At: " + readTime
+                                    text = xpesan + zxc #+ "  At: " + readTime
                                     try:
                                         cl.sendMessage(kirim, text, contentMetadata={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}, contentType=0)
                                     except Exception as error:
                                         print (error)
                                     pass
                                 else:
-                                    cl.sendMessage(kirim,"  「 Reader Notify 」\nGot Invalid,\n  '''Checkread on''' first!")
+                                    cl.sendMessage(kirim,"  「 Group 」\nType: Ceksider1\nBelum diaktifkan\n  'Ceksider 1 on' dahulu.")
                                     print ("Ceksider1 on")
 
-                        elif PuyText.lower() == 'ceksider2 on':
+                        elif PuyText.lower() == 'ceksider 2 on':
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                 try:
                                     del PuyCctv['Point2'][kirim]
@@ -1125,16 +1210,16 @@ def RIDEN_FAST_USER(fast):
                                 PuyCctv['Point2'][kirim] = msg.id
                                 PuyCctv['Point3'][kirim] = ""
                                 PuyCctv['Point1'][kirim]=True
-                                cl.sendText(kirim,"  「 Reader Notify 」\nStarting get reader!")
+                                cl.sendText(kirim,"  「 Group 」\nType: Ceksider2\n\nMemulai cek pembaca.")
                                 print ("Ceksider2 on")
 
-                        elif PuyText.lower() == 'ceksider2 off':
+                        elif PuyText.lower() == 'ceksider 2 off':
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                 if kirim in PuyCctv['Point2']:
                                     PuyCctv['Point1'][kirim]=False
                                     cl.sendText(kirim, PuyCctv['Point3'][kirim])
                                 else:
-                                    cl.sendText(kirim, "  「 Reader Notify 」\nIs now Unactive hee!")
+                                    cl.sendText(kirim, "  「 Group 」\nType: Ceksider2\n\nSekarang dinonaktifkan.")
 
                         elif PuyText.lower().startswith("tagall"):
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
@@ -1155,6 +1240,7 @@ def RIDEN_FAST_USER(fast):
                                         cl.sendMessage(kirim, text=hdc + str(atas), contentMetadata={u'MENTION': json.dumps({'MENTIONEES':com})}, contentType=0)
                                 except Exception as error:
                                     cl.sendMessage(kirim, str(error))
+                                    print ("tagall")
 
                         elif PuyText.lower().startswith("mentionall"):
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
@@ -1175,6 +1261,7 @@ def RIDEN_FAST_USER(fast):
                                         cl.sendMessage(kirim, text=hdc + str(atas), contentMetadata={u'MENTION': json.dumps({'MENTIONEES':com})}, contentType=0)
                                 except Exception as error:
                                     cl.sendMessage(kirim, str(error))
+                                    print ("mentionall")
 
                         elif PuyText in ["Welcomsg on"]:
                           if user in PuySekawan or user in PUYWAIT["Admin"]:
@@ -1273,83 +1360,38 @@ def RIDEN_FAST_USER(fast):
                                 for i in gid:
                                     cl.mentionWithRFU(i,owner," By","\n" + str(" ("+bc+")"))
 
-                        elif PuyText.lower().startswith("adminadd"):
-                            if user in PuySekawan:
-                                key = eval(msg.contentMetadata["MENTION"])
-                                key["MENTIONEES"][0]["M"]
-                                targets = []
-                                for x in key["MENTIONEES"]:
-                                    targets.append(x["M"])
-                                for target in targets:
-                                    if target in PUYWAIT["Admin"]:
-                                        cl.sendText(kirim, "User added to Admin")
-                                    else:
-                                        try:
-                                            PUYWAIT["Admin"][target] = True
-                                            cl.sendText(kirim, "User in Admin ")
-                                        except Exception as e:
-                                            cl.sendText(kirim, str(error))
-
-                        elif PuyText.lower().startswith("admindel"):
+                        elif PuyText.lower() == "hapus chat dimari":
                             if user in Owner:
-                                key = eval(msg.contentMetadata["MENTION"])
-                                key["MENTIONEES"][0]["M"]
-                                targets = []
-                                for x in key["MENTIONEES"]:
-                                    targets.append(x["M"])
-                                for target in targets:
-                                    if target not in PUYWAIT["Admin"]:
-                                        cl.sendText(kirim, "User not Registered as Admin")
-                                    else:
-                                        try:
-                                            del PUYWAIT["Admin"][target]
-                                            cl.sendText(kirim, "Success Deleted User as Admin")
-                                        except Exception as e:
-                                            cl.sendText(kirim, str(error))
-
-                        elif PuyText.lower() == "remove chat":
-                            if user in PuySekawan or user in PUYWAIT["Admin"]:
                                 try:
                                     cl.removeAllMessages(fast.param2)
                                     ginfo = cl.getGroup(kirim)
                                     #cl.mentionWithPuy(kirim,owner,"Remove Message Success ","\n In Grup" + str(" ("+ginfo.name+")"))
-                                    cl.sendText(kirim, 'Remove Message Success in this Group!')
+                                    cl.sendText(kirim, 'Berhasil menghapus obrolan di').format(str(ginfo.name))
                                 except:
                                     pass
 
-                        elif PuyText.lower() == 'restart':
+                        elif PuyText.lower() == 'mulai ulang bot':
                             if user in PuySekawan:
-                                cl.sendText(kirim, 'Restarting...')
-                                print ("Restarting Server")
+                                cl.sendText(kirim, 'Memulai ulang...')
+                                print ("Restarting............")
                                 restart_program()
 
-                        elif PuyText.lower() == 'bot logout':
+                        elif PuyText.lower() == 'bot keluar':
                             if user in PuySekawan:
-                                cl.mentionWithRFU(kirim,user,"!Exit","")
-                                print ("Selfbot Off")
+                                #cl.mentionWithRFU(kirim,user,"!Exit","")
+                                cl.sendMessage(kirim, 'Bot sudah dinonaktifkan!')
+                                print ("BOT OFF")
                                 exit(1)
 
-                        elif PuyText.lower() == 'my grup':
-                            if user in PuySekawan or user in PUYWAIT["Admin"]:
-                                groups = cl.groups
-                                ret_ = "GRUP JOIN"
-                                no = 0 + 1
-                                for gid in groups:
-                                    group = cl.getGroup(gid)
-                                    ret_ += "\n\n{}. {} ".format(str(no), str(group.name))
-                                    no += 1
-                                ret_ += "\n\nTOTAL {} GRUP JOIN".format(str(len(groups)))
-                                cl.sendText(kirim, str(ret_))
-
-                        elif PuyText.lower().startswith("rejectall grup"):
+                        elif PuyText.lower().startswith("tolak undangan"):
                             if user in PuySekawan or user in PUYWAIT["Admin"]:
                                 ginvited = cl.getGroupIdsInvited()
                                 if ginvited != [] and ginvited != None:
                                     for gid in ginvited:
                                         cl.rejectGroupInvitation(gid)
-                                    cl.sendMessage(kirim, "Succes Cancell {} Invite Grup".format(str(len(ginvited))))
+                                    cl.sendMessage(kirim, "Berhasil menolak {} Undangan Grup".format(str(len(ginvited))))
                                 else:
-                                    cl.sendMessage(kirim, "Nothing Invited")
+                                    cl.sendMessage(kirim, "Tidak ada undangan")
 
                         elif PuyText.lower().startswith("status"):
                             if user in Owner:
@@ -1432,7 +1474,7 @@ def RIDEN_FAST_USER(fast):
                                     if PUYWAIT["AutojoinTicket"] == True:
                                         group=cl.findGroupByTicket(ticket_id)
                                         cl.acceptGroupInvitationByTicket(group.id,ticket_id)
-                                        cl.sendText(kirim,"Success Masuk %s" % str(group.name))
+                                        cl.sendText(kirim,"Masuk ke %s" % str(group.name))
 
                         elif PuyText.lower() == 'refreshprofile':
                             if user in PuySekawan or user in PUYWAIT["Admin"]:
@@ -1470,6 +1512,7 @@ def RIDEN_FAST_USER(fast):
 #------------ TEMPLATE ------------#
 ### Token ###
                         elif PuyText.lower().startswith("tokenlist"):
+                          if user in Owner:
                             r = requests.get("https://Puytoken.herokuapp.com/iosipad/Puy")
                             data = r.text
                             data = json.loads(data)
@@ -1813,14 +1856,14 @@ def RIDEN_FAST_USER(fast):
                                     }
                                     data = json.dumps(data)
                                     sendPost = _session.post(url, data=data, headers=headers)
-### INSTAGRAM ###
+### SC ###
                         elif PuyText.lower().startswith('instainfo2'):
                             try:
                                 sep = PuyText.split(" ")
                                 search = PuyText.replace(sep[0] + " ","")
                                 r = requests.get("http://syadnysyz2.herokuapp.com/api/instagram/{}".format(search))
                                 data = r.json()
-                                a=" 「 Fun 」\nType: Search User Instagram"
+                                a=" 「 Fun 」\nType: Search User Instagram\n"
                                 a+="\nName : "+str(data["graphql"]["user"]["full_name"])
                                 a+="\nUsername : "+str(data["graphql"]["user"]["username"])
                                 a+="\nBiography : "+str(data["graphql"]["user"]["biography"])
@@ -1887,6 +1930,84 @@ def RIDEN_FAST_USER(fast):
                                 cl.sendMessage(kirim,a)
                             except Exception as e:
                                 cl.sendMessage(kirim, str(e))
+
+                        elif PuyText.lower().startswith('kbbi'):
+                            try:
+                                sep = PuyText.split(" ")
+                                kata = PuyText.replace(sep[0] + " ","")
+                                r = requests.get("https://farzain.com/api/kbbi.php?id={}&apikey=YAfYs3tyIJJF91Ruc7iw8eW7E".format(urllib.parse.quote(kata)))
+                                data = r.text
+                                ret_ = "Kata : " + str(kata) + "\nDefinisi : "
+                                ret_ += "\n" + str(data)
+                                cl.sendMessage(kirim, str(ret_))
+                            except Exception as error:
+                                cl.sendMessage(kirim, "error\n" + str(error))
+
+                        elif PuyText.lower().startswith('linesticker'):
+                            try:
+                                sep = PuyText.split(" ")
+                                kata = PuyText.replace(sep[0] + " ","")
+                                r = requests.get("https://rest.farzain.com/api/stickerline.php?q={}&apikey=YAfYs3tyIJJF91Ruc7iw8eW7E".format(kata))
+                                data = r.text
+                                ret_ = "Kata : " + str(kata) + "\nDefinisi : "
+                                ret_ += "\n" + str(data["result"]["id"])
+                                ret_ += "\n" + str(data["result"]["title"])
+                                ret_ += "\n" + str(data["result"]["url"])
+                                ret_ += "\n" + str(data["result"]["description"])
+                                ret_ += "\n" + str(data["result"]["type"])
+                                ret_ += "\n" + str(data["result"]["authorName"])
+                                cl.sendMessage(kirim, str(ret_))
+                            except Exception as error:
+                                cl.sendMessage(kirim, "error\n" + str(error))
+
+                        elif PuyText.lower().startswith("animstream"):
+                            try:
+                                proses = PuyText.split(" ")
+                                urutan = PuyText.replace(proses[0] + " ","")
+                                count = urutan.split("|")
+                                search = str(count[0])
+                                r = requests.get("http://api.farzain.com/animestream.php?apikey=YAfYs3tyIJJF91Ruc7iw8eW7E&type=search&q={}".format(search))
+                                data = r.text
+                                data = json.loads(data)
+                                if len(count) == 1:
+                                    no = 0
+                                    hasil = "Anime Streaming From www.riie.net\n"
+                                    for aa in data["result"]:
+                                        no += 1
+                                        hasil += "\n" + str(no) + ". " + str(aa["title"])
+                                        ret_ = "\n\nAnimstream {} | number\nUntuk Melihat Link Dan Episodenya".format(str(search))
+                                    cl.sendMessage(kirim,hasil+ret_)
+                                elif len(count) == 2:
+                                    try:
+                                        num = int(count[1])
+                                        b = data["result"][num - 1]
+                                        c = str(b["title"])
+                                        d = str(b["url"])
+                                        e = str(b["img"])
+                                        f = str(b["genre"])
+                                        g = str(b["desc"])
+                                        hasil = "Informasi Streaming\n "
+                                        hasil = "Judul: "+str(c)
+                                        hasil += "\nLink Anime : "+str(d)
+                                        hasil += "\nLink Gambar : "+str(e)
+                                        hasil += "\nGenre : "+str(f)
+                                        hasil += "\nDeskripsi : "+str(g)
+                                        cl.sendMessage(kirim,hasil)
+                                    except Exception as e:
+                                        cl.sendMessage(kirim," "+str(e))
+                            except Exception as error:
+                                cl.sendMessage(kirim, "error\n" + str(error))
+
+                        elif PuyText.lower().startswith("cari"):
+                            sep = PuyText.split(" ")
+                            search = PuyText.replace(sep[0] + " ","")
+                            url = "http://lmgtfy.com/?q={}".format(urllib.parse.quote(search))
+                            try:
+                                r = requests.get("http://tinyurl.com/api-create.php?url={}".format(url))
+                                hasil = r.text
+                                cl.sendMessage(kirim, "Hasil:\n" + hasil)
+                            except Exception as error:
+                                cl.sendMessage(kirim, "error\n" + str(error))
 
                         elif PuyText.lower().startswith("drakor2"):
                             try:
@@ -2049,7 +2170,7 @@ def RIDEN_FAST_USER(fast):
                             except Exception as e:
                                 cl.sendMessage(kirim, str(e))
 
-                        elif PuyText.lower().startswith("instainfo: "):
+                        elif PuyText.lower().startswith("instainfo1: "):
                             sep = PuyText.split(" ")
                             instagram = PuyText.replace(sep[0] + " ","")
                             html = requests.get('https://www.instagram.com/' + instagram + '/')
@@ -2296,7 +2417,7 @@ def RIDEN_FAST_USER(fast):
                                                     "type": "text",
                                                     "align": "center",
                                                     "weight": "bold",
-                                                    "text": "Dibuat oleh Puy\ndan hanya untuk Bersenang-senang!",
+                                                    "text": "Hanya untuk Bersenang-senang!",
                                                     "color": "#186A3B",
                                                     "wrap": True
                                                   },
@@ -2308,7 +2429,7 @@ def RIDEN_FAST_USER(fast):
                                                     "align": "start",
                                                     "weight": "regular",
                                                     "color": "#000000",
-                                                    "text": "Terimakasih kepada :",
+                                                    "text": "Dipersembahkan oleh :",
                                                     "wrap": True
                                                   },
                                                   {
@@ -2317,7 +2438,7 @@ def RIDEN_FAST_USER(fast):
                                                     "weight": "regular",
                                                     "color": "#aaaaaa",
                                                     "size": "sm",
-                                                    "text": "- Tuhan YME\n- Icad\n- Agee\n- Ical\n- Iyan\n- Zubair\n- Ree\n- Nazri\n- (F)",
+                                                    "text": "- Icad\n- Agee\n- Ical\n- Iyan\n- Zubair\n- Ree\n- Nazri\n- Fian",
                                                     "wrap": True
                                                   },
                                                   {
@@ -2339,7 +2460,7 @@ def RIDEN_FAST_USER(fast):
                                                     "action": {
                                                       "type": "uri",
                                                       "label": "Support Us",
-                                                      "uri": "http://line.me/ti/p/~yapuy"
+                                                      "uri": "http://line.me/ti/p/%40wiz0278g"
                                                     },
                                                     "style": "link",
                                                     "height": "sm"
@@ -2428,7 +2549,7 @@ def RIDEN_FAST_USER(fast):
                                 "messages": [
                                     {
                                             "type": "template",
-                                            "altText": "Imagez",
+                                            "altText": "Puy",
                                             "template": {
                                                 "type": "image_carousel",
                                                 "columns": [
@@ -2452,7 +2573,7 @@ def RIDEN_FAST_USER(fast):
                                                         "imageUrl": "https://image.flaticon.com/icons/png/512/263/263060.png",
                                                         "action": {
                                                             "type": "uri", #"uri",
-                                                            "label": "Pembuat",
+                                                            "label": "Tentang",
                                                             "uri": "line://msg/text/@about"
                                                         }
                                                     },
@@ -2493,6 +2614,7 @@ def RIDEN_FAST_USER(fast):
 ### About Ended ###
 ### IMAGETEST ###
                         elif PuyText.lower().startswith("@tokenlist"):
+                          if user in Owner:
                             _session = requests.session()
                             image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
                             url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
