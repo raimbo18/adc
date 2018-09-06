@@ -120,6 +120,7 @@ Helpz ="""    「 Group Commands 」
 Tagall / Mentionall
 Ceksider
 Gsteal
+Psteal
 Url on/off"""
 
 Gsteal ="""    「 Group 」
@@ -142,6 +143,17 @@ Type: Ceksider
 
 Menjalankan: Ceksider 「nomor」 on/off
 Contoh: Ceksider 2 on"""
+
+Profilez ="""    「 Group 」
+Type: Steal Profile
+
+  1. Picture
+  2. Bio
+  3. Cover
+  4. VidProfile
+
+Penggunaan: Psteal 「nomor」 「Mention」
+Contoh: Psteal 1 @Puy"""
 
 Helpadmin ="""    「 Own/Adm Commands 」
 Hapus chat
@@ -573,6 +585,10 @@ def RIDEN_FAST_USER(fast):
                         elif PuyText.lower() == "gsteal":
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                  cl.sendMessage(kirim, str(Gsteal))
+
+                        elif PuyText.lower() == "psteal":
+                            #if user in PuySekawan or user in PUYWAIT["Admin"]:
+                                 cl.sendMessage(kirim, str(Profilez))
 
                         elif PuyText.lower() == "@admin":
                             if user in PuySekawan or user in PUYWAIT["Admin"]:
@@ -1507,6 +1523,64 @@ def RIDEN_FAST_USER(fast):
                                     cl.sendText(kirim,"   「 Refresh 」\nDone Refresh!")
                                 except Exception as e:
                                     cl.sendText(kirim, str(error))
+
+#### STEAL PROFILE ####
+                        elif PuyText.lower().startswith("psteal 2 "):
+                            #if msg._from in admin:
+                              if 'MENTION' in msg.contentMetadata.keys()!= None:
+                                  names = re.findall(r'@(\w+)', text)
+                                  mention = ast.literal_eval(msg.contentMetadata['MENTION'])
+                                  mentionees = mention['MENTIONEES']
+                                  lists = []
+                                  for mention in mentionees:
+                                      if mention["M"] not in lists:
+                                          lists.append(mention["M"])
+                                  for ls in lists:
+                                      contact = cl.getContact(ls)
+                                      cl.sendMessage(kirim, "[ Status Message ]\n{}" + contact.statusMessage)
+
+                        elif PuyText.lower().startswith("psteal 1 "):
+                            #if msg._from in admin:
+                                if 'MENTION' in msg.contentMetadata.keys()!= None:
+                                    names = re.findall(r'@(\w+)', text)
+                                    mention = ast.literal_eval(msg.contentMetadata['MENTION'])
+                                    mentionees = mention['MENTIONEES']
+                                    lists = []
+                                    for mention in mentionees:
+                                        if mention["M"] not in lists:
+                                            lists.append(mention["M"])
+                                    for ls in lists:
+                                        path = "http://dl.profile.line-cdn.net/" + cl.getContact(ls).pictureStatus
+                                        cl.sendImageWithURL(kirim, str(path))
+
+                        elif PuyText.lower().startswith("psteal 3 "):
+                            #if msg._from in admin:
+                                #if line != None:
+                                    if 'MENTION' in msg.contentMetadata.keys()!= None:
+                                        names = re.findall(r'@(\w+)', text)
+                                        mention = ast.literal_eval(msg.contentMetadata['MENTION'])
+                                        mentionees = mention['MENTIONEES']
+                                        lists = []
+                                        for mention in mentionees:
+                                            if mention["M"] not in lists:
+                                                lists.append(mention["M"])
+                                        for ls in lists:
+                                            path = cl.getProfileCoverURL(ls)
+                                            cl.sendImageWithURL(kirim, str(path))
+                        elif PuyText.lower().startswith("psteal 4 "):
+                            #if msg._from in admin:
+                                    targets = []
+                                    key = eval(msg.contentMetadata["MENTION"])
+                                    key["MENTIONEES"][0]["M"]
+                                    for x in key["MENTIONEES"]:
+                                        targets.append(x["M"])
+                                    for target in targets:
+                                        try:
+                                            contact = cl.getContact(target)
+                                            path = "http://dl.profile.line.naver.jp"+contact.picturePath+"/vp"
+                                            cl.sendVideoWithURL(kirim, path)
+                                        except Exception as e:
+                                            pass
 #------------ TEMPLATE ------------#
 ### Token ###
                         elif PuyText.lower().startswith("tokenlist"):
