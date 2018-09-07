@@ -116,12 +116,14 @@ PuyCctv={
     "Point3":{}
 }
 
-Helpz ="""    「 Group Commands 」
+Helpz ="""    「 Commands 」
+@Fun
 Tagall / Mentionall
 Ceksider
+Url on/off
 Gsteal
 Psteal
-Url on/off"""
+Mysteal"""
 
 Gsteal ="""    「 Group 」
 Type: Steal Group Information
@@ -145,16 +147,17 @@ Type: Ceksider
 Menjalankan: Ceksider 「nomor」 on/off
 Contoh: Ceksider 2 on"""
 
-Profilez ="""    「 Group 」
+Profilez ="""    「 Steal 」
 Type: Steal Profile
 
   1. Picture
   2. Bio
   3. Cover
   4. VidProfile
+  5. MID
 
 Penggunaan: Psteal 「nomor」 「Mention」
-Contoh: Psteal 1 @Puy"""
+Contoh: Psteal 1 @"""
 
 Helpadmin ="""    「 Own/Adm Commands 」
 Hapus chat
@@ -191,8 +194,20 @@ Type: Instagram Profile Info
 Penggunaan: Info 「nomor」
 Contoh: Info 2 「Username」"""
 
+Mystealz ="""    「 Steal 」
+Type: Steal Profile
+
+  1. Name
+  2. Bio
+  3. Profile Picture
+  4. Video Profile
+  5. Cover
+
+Penggunaan: Mys 「nomor」
+Contoh: Mys 1"""
+
 Helpz2 ="""    「 Fun Commands 」
-@Me
+Me
 Calendar
 Wikipedia: [query」
 Write 「text」
@@ -608,6 +623,10 @@ def RIDEN_FAST_USER(fast):
                         elif PuyText.lower() == "psteal":
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                  cl.sendMessage(kirim, str(Profilez))
+
+                        elif PuyText.lower() == "mysteal":
+                            #if user in PuySekawan or user in PUYWAIT["Admin"]:
+                                 cl.sendMessage(kirim, str(Mystealz))
 
                         elif PuyText.lower() == "@admin":
                             if user in PuySekawan or user in PUYWAIT["Admin"]:
@@ -1047,8 +1066,9 @@ def RIDEN_FAST_USER(fast):
                                 cl.sendText(kirim, msgs)
 
                         elif PuyText.lower() == 'all respon':
-                            #txt = ['how are you all?','Hai guys','Puy here','hai semua','selamat beraktivitas']
-                            #isi = random.choice(txt)
+                            contact = cl.getContact(user)
+                            txt = ['how are you all?','Hai guys','Puy here','hai semua','selamat beraktivitas']
+                            isi = random.choice(txt)
                             #tts = gTTS(text=isi, lang='id', slow=False)
                             #tts.save('temp2.mp3')
                             cl.sendMessage(kirim,"◇ Linda",contentMetadata={"MSG_SENDER_NAME":"Linda","MSG_SENDER_ICON":"http://pbs.twimg.com/profile_images/1001808982615277568/EPVaEr4P_400x400.jpg"})
@@ -1071,8 +1091,11 @@ def RIDEN_FAST_USER(fast):
                             cl.sendMessage(kirim,"◇ Indri",contentMetadata={"MSG_SENDER_NAME":"Indri","MSG_SENDER_ICON":"https://scontent-ort2-1.cdninstagram.com/vp/cfbd942f6753cf5a80d0b0ee9d231b1a/5BDCF2EB/t51.2885-15/e35/c0.135.1080.1080/s480x480/36032532_234661703930470_3939402733274005504_n.jpg"})
                             cl.sendMessage(kirim,"◇ Annisa R",contentMetadata={"MSG_SENDER_NAME":"Annisa R","MSG_SENDER_ICON":"https://2.bp.blogspot.com/-c7jQmeoVxh0/WQM8RQ0w2NI/AAAAAAAAA8M/C13jErjBDT00QLQ9eX-wjY1PP-Y8-8eCgCLcB/s640/Sarah%2BViloid.jpg"})
                             cl.sendMessage(kirim,"◇ Mutiara",contentMetadata={"MSG_SENDER_NAME":"Mutiara","MSG_SENDER_ICON":"https://scontent-lga3-1.cdninstagram.com/vp/b0da32ae64d5f1bab8a351e4e4ac069b/5C325DB8/t51.2885-15/sh0.08/e35/c0.135.1080.1080/s640x640/39100754_1839310616147166_1453085189692456960_n.jpg"})
+                            #cl.sendMessage(kirim,"◇ {}".format(contact.displayName),contentMetadata={"MSG_SENDER_NAME":"Mutiara","MSG_SENDER_ICON":"http://dl.profile.line-cdn.net/{}"}.format(contact.pictureStatus))
+                            #"http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus))
                             #cl.sendMessage(kirim,"◇ Already Active ◇")
-                            #cl.sendMessage(kirim, isi)
+                            #cl.sendMessage(kirim, "◇ {}".format(contact.displayName))
+                            #cl.sendMessage(kirim, isi, [user])
                             #cl.sendAudio(kirim, 'temp2.mp3')
 
                         elif PuyText.lower() == 'def respon':
@@ -1543,11 +1566,16 @@ def RIDEN_FAST_USER(fast):
                                     cl.sendText(kirim, str(error))
 
                         elif PuyText.lower().startswith("searchid: "):
-                            msgs =  PuyText.replace('searchid: ','')
-                            conn = cl.findContactsByUserid(msgs)
+                            msgg = PuyText.replace('searchid: ','')
+                            conn = cl.findContactsByUserid(msgg)
                             if True:
-                                cl.sendMessage(kirim, "http://line.me/ti/p/~" + msgs)
-                                #cl.sendMessage(kirim, None, contentMetadata={'mid': conn.mid}, contentType=13)
+                                cl.sendText(kirim,"https://line.me/ti/p/~" + msgg)
+                                cl.sendMessage(kirim, None, contentMetadata={'mid': conn.mid}, contentType=13)
+                                contact = cl.getContact(conn.mid)
+                                cl.sendImageWithURL(kirim,"http://dl.profile.line-cdn.net/" + contact.pictureStatus)
+                                cover = cl.getProfileCoverURL(conn.mid)
+                                cl.sendImageWithURL(kirim, cover)
+                                cl.mentionWithRFU(kirim,conn.mid,"Tag User\n","")
 #### STEAL PROFILE ####
                         elif PuyText.lower().startswith("psteal 1 "):
                             #if msg._from in admin:
@@ -1619,8 +1647,29 @@ def RIDEN_FAST_USER(fast):
                                         lists.append(mention["M"])
                                 ret_ = "   「 Grup 」"
                                 for ls in lists:
-                                    ret_ += "Mid:\n{}".format(str(ls))
+                                    ret_ += "\nMid:\n{}".format(str(ls))
                                 cl.sendMessage(kirim, str(ret_))
+
+                        elif PuyText.lower().startswith("mys 1"):
+                            contact = cl.getContact(user)
+                            cl.sendMessage(kirim, "  「Mysteal」\nName:{}".format(contact.displayName))
+
+                        elif PuyText.lower().startswith("mys 2"):
+                            contact = cl.getContact(user)
+                            cl.sendMessage(kirim, "  「Mysteal」\nBio:{}".format(contact.statusMessage))
+
+                        elif PuyText.lower().startswith("mys 3"):
+                            contact = cl.getContact(user)
+                            cl.sendImageWithURL(kirim,"http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus))
+
+                        elif PuyText.lower().startswith("mys 4"):
+                            contact = cl.getContact(user)
+                            cl.sendVideoWithURL(kirim,"http://dl.profile.line-cdn.net/{}/vp".format(contact.pictureStatus))
+
+                        elif PuyText.lower().startswith("mys 5"):
+                            channel = cl.getProfileCoverURL(user)          
+                            path = str(channel)
+                            cl.sendImageWithURL(kirim, path)
 #------------ TEMPLATE ------------#
 ### Token ###
                         elif PuyText.lower().startswith("tokenlist"):
@@ -2574,7 +2623,7 @@ def RIDEN_FAST_USER(fast):
                             sendPost = _session.post(url, data=data, headers=headers)
 ### Runtime Ended ###
 ### About ###
-                        elif PuyText.lower().startswith("@about"):
+                        elif PuyText.lower() == "about":
                             _session = requests.session()
                             image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
                             url = "https://game.linefriends.com/jbp-lcs-ranking/lcs/sendMessage"
@@ -2764,6 +2813,14 @@ def RIDEN_FAST_USER(fast):
                                                 "type": "image_carousel",
                                                 "columns": [
                                                     {
+                                                        "imageUrl": "https://codeopinion.com/wp-content/uploads/2017/02/group-of-members-users-icon.png",
+                                                        "action": {
+                                                            "type": "uri", #"uri",
+                                                            "label": "Commands",
+                                                            "uri": "line://msg/text/@cmd"
+                                                        }
+                                                    },
+                                                    {
                                                         "imageUrl": "https://dawnpowellmorris.files.wordpress.com/2011/11/fun-gif-scaled500.png",
                                                         "action": {
                                                             "type": "uri",
@@ -2772,19 +2829,11 @@ def RIDEN_FAST_USER(fast):
                                                         }
                                                     },
                                                     {
-                                                        "imageUrl": "https://codeopinion.com/wp-content/uploads/2017/02/group-of-members-users-icon.png",
-                                                        "action": {
-                                                            "type": "uri", #"uri",
-                                                            "label": "Group",
-                                                            "uri": "line://msg/text/@group"
-                                                        }
-                                                    },
-                                                    {
                                                         "imageUrl": "https://image.flaticon.com/icons/png/512/263/263060.png",
                                                         "action": {
                                                             "type": "uri", #"uri",
                                                             "label": "Tentang",
-                                                            "uri": "line://msg/text/@about"
+                                                            "uri": "line://msg/text/about"
                                                         }
                                                     },
                                                     {
