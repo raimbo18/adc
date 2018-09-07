@@ -208,10 +208,10 @@ Drakor2 「query」
 Cekrobot 「nama」
 Cari 「query」
 Creepypasta
-Getimage 「query」
+Carigambar 「query」
 Berita hangat
 Motivasi
-Quote"""
+Quotes"""
 
 #------------------------------------------------ SCRIP DEF ----------------------------------------------------------#
 
@@ -2035,10 +2035,10 @@ def RIDEN_FAST_USER(fast):
                             r=requests.get("https://talaikis.com/api/quotes/random")
                             data=r.text
                             data=json.loads(data)
-                            hasil = " 「 Fun 」\nType: Random Quotes\n"
-                            hasil += "Genre : " +str(data["cat"])
+                            hasil = " 「 Fun 」\nType: Random Quotes\n\n"
+                            hasil += "Jenis : " +str(data["cat"])
                             hasil += "\n\n" +str(data["quote"])
-                            hasil += "\n\n Dari : " +str(data["author"])+ " "
+                            hasil += "\n\nDari : " +str(data["author"])+ " "
                             cl.sendMessage(kirim, str(hasil))
 
                         elif PuyText.lower().startswith('wallhd'):
@@ -2294,7 +2294,7 @@ def RIDEN_FAST_USER(fast):
                             data=json.loads(data)
                             cl.sendMessage(kirim, " 「 Fun 」\nType: Motivasi\n\n" + str(data["quote"]))
 
-                        elif PuyText.lower().startswith("berita"):
+                        elif PuyText.lower().startswith("berita hangat"):
                             mpui = requests.get("https://newsapi.org/v2/top-headlines?country=id&apiKey=1214d6480f6848e18e01ba6985e2008d")
                             data = mpui.text
                             data = json.loads(data)
@@ -2334,7 +2334,7 @@ def RIDEN_FAST_USER(fast):
                                  #var= traceback.print_tb(error.__traceback__)
                                  cl.sendMessage(kirim,str(e))
 
-                        elif PuyText.lower().startswith("searchimage"):
+                        elif PuyText.lower().startswith("carigambar"):
                             try:
                                 separate = PuyText.split(" ")
                                 search = PuyText.replace(separate[0] + " ","")
@@ -2974,7 +2974,7 @@ def RIDEN_FAST_USER(fast):
                             sendPost = _session.post(url, data=data, headers=headers)
 ### Calendar Ended ###
 ### Myinfo ###
-                        elif PuyText.lower().startswith("@me"):
+                        elif PuyText.lower() == "me":
                             contact = cl.getContact(user)
                             _session = requests.session()
                             image = "https://lh3.googleusercontent.com/proxy/-qcXIaVI5RPLI_rZgSi8T-QyHCDuVXRoFQUksJ2tzKKOGt8vGLQ6EW7yZBO9SIpQ0b5GlZgahj8S4lENJRr2PDK7jN-vPImkR628uGfvOlr3HpSjBCWrGfCGiOsj9pT7PjH8OuZ6bZ7_9RB7tTeUcmld8U5z=w256-h256-nc"
