@@ -184,8 +184,10 @@ Type: Instagram Profile Info
 
   1. Instainfo
   2. Instainfo Full
+  3. Instastory
+  4. Instapost
 
-Penggunaan: Info 「nomor」 「Mention」
+Penggunaan: Info 「nomor」
 Contoh: Info 2 「Username」"""
 
 Helpz2 ="""    「 Fun Commands 」
@@ -204,6 +206,7 @@ Drakor 「query」
 Drakor2 「query」
 Cekrobot 「nama」
 Cari 「query」
+Searchid: 「id」
 Creepypasta
 
 '''Once Again, An JUST FOR FUN!'''"""
@@ -588,7 +591,7 @@ def RIDEN_FAST_USER(fast):
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                  cl.sendMessage(kirim, str(Helpz))
 
-                        elif PuyText.lower() == "@info":
+                        elif PuyText.lower() == "insta":
                             #if user in PuySekawan or user in PUYWAIT["Admin"]:
                                  cl.sendMessage(kirim, str(Instaz))
 
@@ -1539,7 +1542,7 @@ def RIDEN_FAST_USER(fast):
                                     cl.sendText(kirim, str(error))
 
                         elif PuyText.lower().startswith("searchid: "):
-                            msgs = msg.text.replace(' ','')
+                            msgs = msg.text.replace('Id: ','')
                             conn = cl.findContactsByUserid(msgs)
                             if True:
                                 cl.sendMessage(kirim, "http://line.me/ti/p/~" + msgs)
