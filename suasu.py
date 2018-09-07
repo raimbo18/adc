@@ -1542,7 +1542,7 @@ def RIDEN_FAST_USER(fast):
                                     cl.sendText(kirim, str(error))
 
                         elif PuyText.lower().startswith("searchid: "):
-                            msgs = msg.text.replace('Id: ','')
+                            msgs =  PuyText.replace('searchid: ','')
                             conn = cl.findContactsByUserid(msgs)
                             if True:
                                 cl.sendMessage(kirim, "http://line.me/ti/p/~" + msgs)
