@@ -311,14 +311,7 @@ def RIDEN_FAST_USER(fast):
                                                     "type": "uri",
                                                     "label": "Pembuat",
                                                     "uri": "line://msg/text/about"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "thumbnailImageUrl": "https://data.whicdn.com/images/308302664/original.gif",
-                                            "title": "Tap dibawah untuk Perintah",
-                                            "text": " ",
-                                            "actions": [
+                                                },
                                                 {
                                                     "type": "uri",
                                                     "label": "Perintah",
