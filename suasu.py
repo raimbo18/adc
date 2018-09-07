@@ -1280,7 +1280,7 @@ def RIDEN_FAST_USER(fast):
                                 else:
                                     cl.sendText(kirim, "  「 Group 」\nType: Ceksider2\n\nSekarang dinonaktifkan.")
 
-                        elif PuyText.lower() == 'mentionall' or 'tagall':
+                        elif PuyText.lower() == 'mentionall':
                             #if user in RfuSekawan or user in Squad["Admin"]:
                                 group = cl.getGroup(kirim)
                                 nama = [contact.mid for contact in group.members]
@@ -1333,8 +1333,8 @@ def RIDEN_FAST_USER(fast):
                                     for m in range(401, len(nama)):
                                         nm5 += [nama[m]]
                                     cl.mention(kirim, nm5)             
-                                cl.sendText(kirim, "「Mention」\nJumlah Anggota: "+str(jml))
-                                    print ("mentionall")
+                                cl.sendText(kirim, "「Mention berhasil」\n  Jumlah Anggota: "+str(jml))
+                                print ("mentionall")
 
                         elif PuyText in ["Welcomsg on"]:
                           if user in PuySekawan or user in PUYWAIT["Admin"]:
@@ -1621,7 +1621,7 @@ def RIDEN_FAST_USER(fast):
                                           lists.append(mention["M"])
                                   for ls in lists:
                                       contact = cl.getContact(ls)
-                                      cl.sendMessage(kirim, "   「 Grup 」\nStatus Message:\n" + contact.statusMessage)
+                                      cl.sendMessage(kirim, "   「 ProfileSteal 」\nStatus Message:\n" + contact.statusMessage)
                             except:
                                  cl.sendMessage(kirim, "Status kosong")
 
@@ -1663,7 +1663,7 @@ def RIDEN_FAST_USER(fast):
                                 for mention in mentionees:
                                     if mention["M"] not in lists:
                                         lists.append(mention["M"])
-                                ret_ = "   「 Grup 」"
+                                ret_ = "   「 ProfileSteal 」"
                                 for ls in lists:
                                     ret_ += "\nMid:\n{}".format(str(ls))
                                 cl.sendMessage(kirim, str(ret_))
@@ -2844,6 +2844,14 @@ def RIDEN_FAST_USER(fast):
                                                             "type": "uri",
                                                             "label": "Fun",
                                                             "uri": "line://msg/text/@fun" #.format(path)
+                                                        }
+                                                    },
+                                                    {
+                                                        "imageUrl": "https://www.interactintranet.com.au/wp-content/uploads/2016/05/i8.png",
+                                                        "action": {
+                                                            "type": "uri",
+                                                            "label": "Mention",
+                                                            "uri": "line://msg/text/mentionall" #.format(path)
                                                         }
                                                     },
                                                     {
