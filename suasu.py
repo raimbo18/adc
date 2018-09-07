@@ -1266,58 +1266,58 @@ def RIDEN_FAST_USER(fast):
                                     cl.sendText(kirim, "  「 Group 」\nType: Ceksider2\n\nSekarang dinonaktifkan.")
 
                         elif PuyText.lower() == 'mentionall':
-                            #if user in RfuSekawan or user in Squad["Admin"]:
+                            if user in Owner:
                                 group = cl.getGroup(kirim)
                                 nama = [contact.mid for contact in group.members]
                                 nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
                                 if jml <= 100:
-                                    cl.mention(kirim, nama)
+                                    cl.mentionWithRFU(kirim, nama)
                                 if jml > 100 and jml < 200:
                                     for i in range(0, 100):
                                         nm1 += [nama[i]]
-                                    cl.mention(kirim, nm1)
+                                    cl.mentionWithRFU(kirim, nm1)
                                     for j in range(101, len(nama)):
                                         nm2 += [nama[j]]
-                                    cl.mention(kirim, nm2)
+                                    cl.mentionWithRFU(kirim, nm2)
                                 if jml > 200 and jml < 300:
                                     for i in range(0, 100):
                                         nm1 += [nama[i]]
-                                    cl.mention(kirim, nm1)
+                                    cl.mentionWithRFU(kirim, nm1)
                                     for j in range(101, 200):
                                         nm2 += [nama[j]]
-                                    cl.mention(kirim, nm2)
+                                    cl.mentionWithRFU(kirim, nm2)
                                     for k in range(201, len(nama)):
                                         nm3 += [nama[k]]
-                                    cl.mention(kirim, nm3)
+                                    cl.mentionWithRFU(kirim, nm3)
                                 if jml > 300 and jml < 400:
                                     for i in range(0, 100):
                                         nm1 += [nama[i]]
-                                    cl.mention(kirim, nm1)
+                                    cl.mentionWithRFU(kirim, nm1)
                                     for j in range(101, 200):
                                         nm2 += [nama[j]]
-                                    cl.mention(kirim, nm2)
+                                    cl.mentionWithRFU(kirim, nm2)
                                     for k in range(201, len(nama)):
                                         nm3 += [nama[k]]
-                                    cl.mention(kirim, nm3)
+                                    cl.mentionWithRFU(kirim, nm3)
                                     for l in range(301, len(nama)):
                                         nm4 += [nama[l]]
-                                    cl.mention(kirim, nm4)
+                                    cl.mentionWithRFU(kirim, nm4)
                                 if jml > 400 and jml < 501:
                                     for i in range(0, 100):
                                         nm1 += [nama[i]]
-                                    cl.mention(kirim, nm1)
+                                    cl.mentionWithRFU(kirim, nm1)
                                     for j in range(101, 200):
                                         nm2 += [nama[j]]
-                                    cl.mention(kirim, nm2)
+                                    cl.mentionWithRFU(kirim, nm2)
                                     for k in range(201, len(nama)):
                                         nm3 += [nama[k]]
-                                    cl.mention(kirim, nm3)
+                                    cl.mentionWithRFU(kirim, nm3)
                                     for l in range(301, len(nama)):
                                         nm4 += [nama[l]]
-                                    cl.mention(kirim, nm4)
+                                    cl.mentionWithRFU(kirim, nm4)
                                     for m in range(401, len(nama)):
                                         nm5 += [nama[m]]
-                                    cl.mention(kirim, nm5)             
+                                    cl.mentionWithRFU(kirim, nm5)
                                 cl.sendText(kirim, "「Mention berhasil」\n  Jumlah Anggota: "+str(jml))
                                 print ("mentionall")
 
@@ -2829,14 +2829,6 @@ def RIDEN_FAST_USER(fast):
                                                             "type": "uri",
                                                             "label": "Fun",
                                                             "uri": "line://msg/text/@fun" #.format(path)
-                                                        }
-                                                    },
-                                                    {
-                                                        "imageUrl": "https://cdn.pixabay.com/photo/2017/03/30/20/22/black-2189644_960_720.png",
-                                                        "action": {
-                                                            "type": "uri",
-                                                            "label": "Mention",
-                                                            "uri": "line://msg/text/mentionall" #.format(path)
                                                         }
                                                     },
                                                     {
