@@ -300,7 +300,7 @@ def RIDEN_FAST_USER(fast):
                                     "actions": [],
                                     "columns": [
                                         {
-                                            "thumbnailImageUrl": "https://media.giphy.com/media/Vv0OzmTm0yQtW/giphy.gif",
+                                            "thumbnailImageUrl": "https://data.whicdn.com/images/308302664/original.gif",
                                             "title": "Masuk ke grup {}".format(str(ginfo.name)),
                                             "text": "Diundang oleh {}".format(str(contact.displayName)),
                                             "imageAspectRatio": "rectangle",
@@ -309,13 +309,13 @@ def RIDEN_FAST_USER(fast):
                                             "actions": [
                                                 {
                                                     "type": "uri",
-                                                    "label": "Pembuat",
-                                                    "uri": "line://msg/text/about"
+                                                    "label": "Perintah",
+                                                    "uri": "line://msg/text/@cmd"
                                                 },
                                                 {
                                                     "type": "uri",
-                                                    "label": "Perintah",
-                                                    "uri": "line://msg/text/@cmd"
+                                                    "label": "Pembuat",
+                                                    "uri": "line://msg/text/about"
                                                 }
                                             ]
                                         }
@@ -2840,7 +2840,7 @@ def RIDEN_FAST_USER(fast):
                                                         }
                                                     },
                                                     {
-                                                        "imageUrl": "https://cdn.pixabay.com/photo/2017/03/30/20/22/black-2189644_960_720.png",
+                                                        "imageUrl": "http://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Tom-and-Jerry-PNG-Transparent-Image-500x469.png",
                                                         "action": {
                                                             "type": "uri", #"uri",
                                                             "label": "Tentang",
@@ -2848,7 +2848,7 @@ def RIDEN_FAST_USER(fast):
                                                         }
                                                     },
                                                     {
-                                                        "imageUrl": "https://cdn.pixabay.com/photo/2017/03/30/20/22/black-2189644_960_720.png",
+                                                        "imageUrl": "https://cdn0.iconfinder.com/data/icons/emotions-line/2048/1656_-_Bye-512.png",
                                                         "action": {
                                                             "type": "uri", #"uri",
                                                             "label": "Keluarkan",
