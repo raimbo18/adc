@@ -303,7 +303,8 @@ def RIDEN_FAST_USER(fast):
                                             "thumbnailImageUrl": "https://media.giphy.com/media/Vv0OzmTm0yQtW/giphy.gif",
                                             "title": "Masuk ke grup {}".format(str(ginfo.name)),
                                             "text": "Diundang oleh {}".format(str(contact.displayName)),
-                                            #"imageAspectRatio": "square",
+                                            "imageAspectRatio": "rectangle",
+                                            "imageBackgroundColor": "#FFFFFF",
                                             "imageSize": "contain",
                                             "actions": [
                                                 {
