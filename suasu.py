@@ -239,7 +239,6 @@ Creepypasta
 Carigambar 「query」
 Berita hangat
 Motivasi
-Screenshot 「linksite」
 Quotes"""
 
 #------------------------------------------------ SCRIP DEF ----------------------------------------------------------#
@@ -2139,8 +2138,8 @@ def RIDEN_FAST_USER(fast):
                             data=r.text
                             data=json.loads(data)
                             hasil = " 「 Fun 」\nType: Random Quotes\n\n"
-                            hasil += "Jenis : " +str(data["cat"])
-                            hasil += "\n\n" +str(data["quote"])
+                            hasil += "Genre : " +str(data["cat"])
+                            hasil += "\n" +str(data["quote"])
                             hasil += "\n\nDari : " +str(data["author"])+ " "
                             cl.sendMessage(kirim, str(hasil))
 
